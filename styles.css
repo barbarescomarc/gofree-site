@@ -135,10 +135,7 @@ h1, h2, h3, .lame__lieu, .plaque__titre {
     align-items: start;
   }
   .deux-colonnes .etape__entete { max-width: 42ch; }
-  .deux-colonnes .vues {
-    margin-top: 0;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
-  }
+  .deux-colonnes .vues { margin-top: 0; }
   .deux-colonnes .plaques { grid-column: 1 / -1; }
 }
 
@@ -317,17 +314,20 @@ h1, h2, h3, .lame__lieu, .plaque__titre {
 }
 
 /* ── Écrans de l'application ────────────────────────────────── */
+/* Les captures se calent sur la HAUTEUR, comme l'écran du héros : ce sont
+   des ecrans de telephone, bien plus hauts que larges. Les dimensionner en
+   largeur les faisait occuper toute la section et noyait le texte. */
 .vues {
   margin: clamp(2.25rem, 5.5vh, 3.5rem) 0 0;
-  display: grid;
-  gap: clamp(1.25rem, 3vw, 2.25rem);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 14rem));
-  justify-content: start;
-  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: flex-start;
 }
-.vue { margin: 0; }
+.vue { margin: 0; max-width: 15rem; }
 .vue img {
-  width: 100%;
+  height: min(44vh, 400px);
+  width: auto;
   border: 3px solid var(--grave);
   box-shadow: var(--lame-ombre);
   background: var(--foret-fonce);
@@ -438,4 +438,9 @@ h1, h2, h3, .lame__lieu, .plaque__titre {
   .lames { margin-top: 1.4rem; }
   .poteau { padding-top: 40px; padding-bottom: 48px; }
   .ecran-poteau img { height: min(46vh, 380px); }
+}
+
+@media (max-width: 34rem) {
+  .vue { max-width: 100%; }
+  .vue img { height: auto; width: min(100%, 15rem); }
 }
