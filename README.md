@@ -18,10 +18,14 @@ img/            captures réelles de l'application
 
 ## À remplacer
 
-- Le bouton « Rejoindre les tests » attend le **lien public TestFlight**
-  (`https://testflight.apple.com/join/XXXXXXXX`). Il est actuellement
-  désactivé, avec l'adresse e-mail en repli. Chercher le commentaire
-  `REMPLACER` dans `index.html`.
+- Le **lien public TestFlight** est en place : son code vit dans
+  `data-testflight` (`index.html`), et l'URL complète est recomposée par le
+  script. Pour le changer, remplacer les huit caractères qui suivent `/join/`.
+  Si l'attribut est vidé, le bouton retombe sur l'adresse e-mail.
+- Le bloc TestFlight ne sort que sur iPhone : sur Android, le script retire
+  `[data-plateforme="ios"]` du document et affiche le bloc Android à la place
+  (« la version Android arrive », même adresse e-mail). Le lien d'invitation
+  n'est donc jamais composé sur un appareil Android.
 - `marc@gofree.fr` est une redirection OVH vers la boîte personnelle.
   Nom volontairement non générique : `contact@` et `info@` sont attaqués au
   dictionnaire par les robots, sans même avoir à les trouver sur une page.

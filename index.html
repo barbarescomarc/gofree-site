@@ -433,21 +433,45 @@
         retours. Si tu sors régulièrement en moto tout-terrain, en 4×4 ou en
         camping-car, ta place est ici.
       </p>
-      <a class="bouton bouton--principal bouton--large courriel"
-         data-nom="marc" data-dom="gofree.fr"
-         data-sujet="Je veux tester GO FREE"
-         data-corps="Ce que je roule :&#10;Le massif :"
-         href="#tester">
-        Demander une place dans les tests
-      </a>
-      <p class="appel__note">
-        Le lien d'inscription TestFlight arrive. En attendant, écris à
-        <a class="courriel" data-nom="marc" data-dom="gofree.fr"
+      <!-- data-testflight porte les huit caractères qui suivent /join/ dans
+           le lien public TestFlight. Vidé, le bouton retombe sur le courriel. -->
+      <div data-plateforme="ios">
+        <a class="bouton bouton--principal bouton--large courriel testflight"
+           data-testflight="ZnMZfHfG"
+           data-nom="marc" data-dom="gofree.fr"
            data-sujet="Je veux tester GO FREE"
-           href="#tester">marc [chez] gofree.fr</a> en disant ce que
-        tu roules et où. Couverture France&nbsp;: les fonds viennent de l'IGN et
-        s'arrêtent aux frontières.
-      </p>
+           data-corps="Ce que je roule :&#10;Le massif :"
+           href="#tester">
+          Demander une place dans les tests
+        </a>
+        <p class="appel__note">
+          Le bouton ouvre TestFlight, l'application de test d'Apple. Une
+          question avant de te lancer&nbsp;? Écris à
+          <a class="courriel" data-nom="marc" data-dom="gofree.fr"
+             data-sujet="Je veux tester GO FREE"
+             href="#tester">marc [chez] gofree.fr</a>. Couverture
+          France&nbsp;: les fonds viennent de l'IGN et s'arrêtent aux frontières.
+        </p>
+      </div>
+
+      <div data-plateforme="android" hidden>
+        <a class="bouton bouton--principal bouton--large courriel"
+           data-nom="marc" data-dom="gofree.fr"
+           data-sujet="Je veux tester GO FREE sur Android"
+           data-corps="Ce que je roule :&#10;Le massif :&#10;Mon téléphone :"
+           href="#tester">
+          Demander une place dans les tests
+        </a>
+        <p class="appel__note">
+          La version Android arrive&nbsp;: TestFlight n'existe que sur iPhone.
+          Écris à
+          <a class="courriel" data-nom="marc" data-dom="gofree.fr"
+             data-sujet="Je veux tester GO FREE sur Android"
+             href="#tester">marc [chez] gofree.fr</a> en disant ce que
+          tu roules et où, on te préviendra dès l'ouverture. Couverture
+          France&nbsp;: les fonds viennent de l'IGN et s'arrêtent aux frontières.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -463,21 +487,52 @@
 </footer>
 
 <script>
-// L'adresse n'est jamais écrite d'un seul tenant dans la page : elle est
-// recomposée ici. Un robot qui lit le HTML n'y trouve ni « mailto: » ni
-// l'adresse complète. Sans JavaScript, le texte reste lisible par un humain
-// sous la forme « marc [chez] gofree.fr ».
 (function () {
-  var liens = document.querySelectorAll('a.courriel');
-  for (var i = 0; i < liens.length; i++) {
-    var a = liens[i];
-    var adresse = a.dataset.nom + String.fromCharCode(64) + a.dataset.dom;
-    var params = [];
-    if (a.dataset.sujet) params.push('subject=' + encodeURIComponent(a.dataset.sujet));
-    if (a.dataset.corps) params.push('body=' + encodeURIComponent(a.dataset.corps));
-    a.href = 'mail' + 'to:' + adresse + (params.length ? '?' + params.join('&') : '');
-    if (a.textContent.indexOf('[chez]') !== -1) a.textContent = adresse;
+  // TestFlight n'existe que sur iPhone : sur Android le bloc iOS est retiré du
+  // document — pas seulement masqué — et l'adresse d'invitation n'y est jamais
+  // composée. Un appareil Android n'a donc pas le lien, ni à l'écran ni dans la
+  // source de la page.
+  var plateforme = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.userAgent;
+  var estAndroid = /android/i.test(plateforme);
+
+  function neGardeQueLaPlateforme(gardee) {
+    var blocs = document.querySelectorAll('[data-plateforme]');
+    for (var i = 0; i < blocs.length; i++) {
+      if (blocs[i].dataset.plateforme === gardee) blocs[i].hidden = false;
+      else blocs[i].parentNode.removeChild(blocs[i]);
+    }
   }
+
+  // L'adresse n'est jamais écrite d'un seul tenant dans la page : elle est
+  // recomposée ici. Un robot qui lit le HTML n'y trouve ni « mailto: » ni
+  // l'adresse complète. Sans JavaScript, le texte reste lisible par un humain
+  // sous la forme « marc [chez] gofree.fr ».
+  function composeLesAdresses() {
+    var liens = document.querySelectorAll('a.courriel');
+    for (var i = 0; i < liens.length; i++) {
+      var a = liens[i];
+      var adresse = a.dataset.nom + String.fromCharCode(64) + a.dataset.dom;
+      var params = [];
+      if (a.dataset.sujet) params.push('subject=' + encodeURIComponent(a.dataset.sujet));
+      if (a.dataset.corps) params.push('body=' + encodeURIComponent(a.dataset.corps));
+      a.href = 'mail' + 'to:' + adresse + (params.length ? '?' + params.join('&') : '');
+      if (a.textContent.indexOf('[chez]') !== -1) a.textContent = adresse;
+    }
+  }
+
+  // Après les adresses : le bouton porte les deux rôles, et l'invitation doit
+  // l'emporter sur le courriel de repli dès que le code TestFlight est rempli.
+  function composeLesInvitations() {
+    var invitations = document.querySelectorAll('a.testflight');
+    for (var i = 0; i < invitations.length; i++) {
+      var code = invitations[i].dataset.testflight;
+      if (code) invitations[i].href = 'https://testflight.apple.com/join/' + code;
+    }
+  }
+
+  neGardeQueLaPlateforme(estAndroid ? 'android' : 'ios');
+  composeLesAdresses();
+  if (!estAndroid) composeLesInvitations();
 })();
 </script>
 </body>
