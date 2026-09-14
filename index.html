@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MOTO OFFROAD 4X4 — la carte IGN hors ligne, et les secours si tu tombes</title>
+<meta name="description" content="Application GPS pour rouler hors des routes ouvertes en France : cartes IGN emportables hors ligne, détection de chute, alerte aux contacts de confiance. En test sur iPhone et Android.">
+<meta name="theme-color" content="#14432E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/rajdhani-700-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/barlow-400-latin.woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="MOTO OFFROAD 4X4">
+<meta property="og:description" content="La carte IGN hors ligne, et les secours si tu tombes. En test sur iPhone et Android.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gofree.fr/">
+</head>
+<body>
+
+<!-- ═══ LE POTEAU ═══════════════════════════════════════════ -->
+<header class="poteau">
+  <div class="enveloppe">
+    <div class="poteau__contenu">
+      <div class="poteau__texte">
+      <h1>Tu roules là où la route s'arrête.<em>L'app suit.</em></h1>
+      <p class="poteau__sous">
+        Les cartes IGN dans ta poche, même sans réseau. Et si tu tombes,
+        tes contacts sont prévenus avec ta position — sans que tu aies
+        à sortir le téléphone.
+      </p>
+
+      <ul class="lames">
+        <li><a class="lame" href="#terrain">
+          <span class="lame__lieu">Le terrain</span>
+          <span class="lame__duree">2 min</span>
+        </a></li>
+        <li><a class="lame" href="#securite">
+          <span class="lame__lieu">La sécurité</span>
+          <span class="lame__duree">3 min</span>
+        </a></li>
+        <li><a class="lame" href="#regle">
+          <span class="lame__lieu">La règle</span>
+          <span class="lame__duree">1 min</span>
+        </a></li>
+        <li><a class="lame lame--action" href="#tester">
+          <span class="lame__lieu">Devenir testeur</span>
+          <span class="lame__duree">30 s</span>
+        </a></li>
+      </ul>
+      </div>
+
+      <figure class="ecran-poteau">
+        <img src="img/carte-ign.jpg" width="684" height="874" fetchpriority="high"
+             alt="L'application affichant la carte topographique IGN autour d'Embrun, avec le bouton SOS et l'échelle de distance.">
+      </figure>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ═══ LE TERRAIN ══════════════════════════════════════════ -->
+<section class="etape etape--claire" id="terrain">
+  <div class="enveloppe deux-colonnes">
+    <div class="etape__entete">
+      <span class="balise" aria-hidden="true"></span>
+      <h2>La carte de l'IGN, emportée</h2>
+      <p class="etape__chapo">
+        Le fond topographique officiel et la photo aérienne de la
+        Géoplateforme, avec l'ombrage du relief pour lire une pente avant
+        de s'y engager. Les zones déjà consultées restent affichables sans
+        réseau — c'est une règle du produit : aucun fond n'est proposé
+        s'il n'est pas emportable.
+      </p>
+    </div>
+
+    <div class="vues">
+      <figure class="vue">
+        <img src="img/carte-ign.jpg" width="684" height="874" loading="lazy"
+             alt="Carte topographique IGN autour d'Embrun, avec les chemins, les courbes de niveau et le bouton SOS.">
+        <figcaption>Fond topographique IGN, ombrage du relief activé. L'échelle indique ce qu'un centimètre représente sur le terrain.</figcaption>
+      </figure>
+      <figure class="vue">
+        <img src="img/carte-photo.jpg" width="684" height="874" loading="lazy"
+             alt="La même zone en photo aérienne IGN : parcelles, forêts et rivière vues du ciel.">
+        <figcaption>Photo aérienne, même secteur. On bascule d'un fond à l'autre sans attendre.</figcaption>
+      </figure>
+    </div>
+
+    <ul class="plaques">
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="2 7 9 4 15 7 22 4 22 17 15 20 9 17 2 20 2 7"/>
+          <line x1="9" y1="4" x2="9" y2="17"/><line x1="15" y1="7" x2="15" y2="20"/>
+        </svg>
+        <h3 class="plaque__titre">Hors ligne</h3>
+        <p>Les tuiles déjà vues sont gardées sur le téléphone. Le fond de vallée sans réseau ne t'efface pas la carte.</p>
+      </li>
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="2 18 8 8 12 13 16 5 22 18"/>
+        </svg>
+        <h3 class="plaque__titre">Le relief</h3>
+        <p>L'ombrage IGN creuse les vallées et fait ressortir les crêtes. Tu vois la pente avant de t'y engager.</p>
+      </li>
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 6c3 0 3 3 6 3s3-3 6-3 4 2 4 2"/>
+          <path d="M4 13c3 0 3 3 6 3s3-3 6-3 4 2 4 2"/>
+        </svg>
+        <h3 class="plaque__titre">Les traces</h3>
+        <p>Enregistre ta sortie, retouche-la, fusionne deux segments. Partage-la ou reprends celle d'un autre.</p>
+      </li>
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/>
+          <path d="M15 9l-2.5 5.5L7 17l2.5-5.5z"/>
+        </svg>
+        <h3 class="plaque__titre">Le guidage</h3>
+        <p>Flèches de manœuvre, carte et trace toujours visibles, écran qui reste allumé. Lisible avec des gants.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ LA SÉCURITÉ ═════════════════════════════════════════ -->
+<section class="etape etape--emaillee" id="securite">
+  <div class="enveloppe">
+    <div class="etape__entete">
+      <span class="balise" aria-hidden="true"></span>
+      <h2>Si tu tombes et que personne ne te voit</h2>
+      <p class="etape__chapo">
+        L'accéléromètre et le GPS détectent un choc suivi d'une immobilité.
+        Un compte à rebours s'affiche. Sans réaction de ta part, l'alerte
+        part vers tes contacts de confiance avec ta position — par SMS
+        depuis le téléphone et par le serveur.
+      </p>
+    </div>
+
+    <ul class="plaques">
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/>
+          <path d="M12 8v5M12 16v.5"/>
+        </svg>
+        <h3 class="plaque__titre">Détection de chute</h3>
+        <p>Trois signaux doivent converger : le choc, l'orientation d'arrivée, et les vibrations retombées. Un nid-de-poule ne déclenche rien.</p>
+      </li>
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+        </svg>
+        <h3 class="plaque__titre">Compte à rebours</h3>
+        <p>Tu gardes la main : un geste annule l'alerte. Le délai se règle selon le terrain que tu pratiques.</p>
+      </li>
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21s-7-5.2-7-10a7 7 0 1114 0c0 4.8-7 10-7 10z"/>
+          <circle cx="12" cy="11" r="2.6"/>
+        </svg>
+        <h3 class="plaque__titre">Suivi solo</h3>
+        <p>Tes proches suivent ta progression sur un lien, sans installer quoi que ce soit. Tu coupes quand tu veux.</p>
+      </li>
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="8" cy="9" r="3"/><circle cx="17" cy="11" r="2.4"/>
+          <path d="M2.5 19c.7-3 2.9-4.5 5.5-4.5S12.8 16 13.5 19"/>
+          <path d="M15 15.2c2 .3 3.6 1.5 4.2 3.8"/>
+        </svg>
+        <h3 class="plaque__titre">Mode groupe</h3>
+        <p>Jusqu'à vingt pilotes se voient en direct sur la même carte, avec un point de ralliement partagé.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══ LA RÈGLE ════════════════════════════════════════════ -->
+<section class="etape etape--claire" id="regle">
+  <div class="enveloppe deux-colonnes">
+    <div class="etape__entete">
+      <span class="balise" aria-hidden="true"></span>
+      <h2>Ce que dit la loi, avec toi sur la piste</h2>
+      <p class="etape__chapo">
+        Loi Lalonde, chemins ONF, pistes DFCI, espaces naturels sensibles,
+        règles du bivouac sauvage, zones à risque. Consultable hors ligne,
+        au moment où la question se pose — pas au retour, quand c'est trop
+        tard.
+      </p>
+    </div>
+
+    <div class="vues">
+      <figure class="vue">
+        <img src="img/reglementation.jpg" width="648" height="900" loading="lazy"
+             alt="Écran de l'application listant les zones à risque, les bons réflexes de terrain et les numéros d'urgence.">
+        <figcaption>Zones à risque, bons réflexes, numéros d'urgence. Disponible sans réseau.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEVENIR TESTEUR ═════════════════════════════════════ -->
+<section class="etape inscription" id="tester">
+  <div class="enveloppe">
+    <div class="etape__entete">
+      <span class="balise" aria-hidden="true"></span>
+      <h2>L'app est en test. Viens l'éprouver.</h2>
+      <p class="etape__chapo">
+        Elle roule déjà, mais elle a besoin de vrais terrains et de vrais
+        retours. Si tu sors régulièrement en moto tout-terrain ou en 4×4,
+        ta place est ici.
+      </p>
+
+      <!-- REMPLACER par le lien public TestFlight :
+           https://testflight.apple.com/join/XXXXXXXX -->
+      <a class="bouton" href="#tester" aria-disabled="true">
+        Rejoindre les tests
+      </a>
+      <p class="appoint">
+        Le lien d'inscription TestFlight arrive. En attendant, écris à
+        <a href="mailto:contact@gofree.fr?subject=Je%20veux%20tester%20MOTO%20OFFROAD%204X4">contact@gofree.fr</a>
+        en disant ce que tu roules et où — on t'ajoute à la prochaine vague.
+      </p>
+
+      <div class="couverture">
+        <p>
+          <strong>Couverture France.</strong> Les fonds cartographiques
+          viennent de l'IGN et s'arrêtent aux frontières. Hors de France,
+          l'app n'a pas de carte à te montrer.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BIENTÔT ═════════════════════════════════════════════ -->
+<section class="etape etape--claire">
+  <div class="enveloppe">
+    <div class="etape__entete">
+      <span class="balise" aria-hidden="true"></span>
+      <h2>La suite</h2>
+      <p class="etape__chapo">
+        Le camping-car rejoindra la moto et le 4×4 : mêmes cartes, mêmes
+        traces, mêmes secours, avec ce qu'il faut en plus pour voyager en
+        autonomie. Pas de date annoncée tant que ce n'est pas prêt.
+      </p>
+    </div>
+    <ul class="lames" style="margin-top:clamp(1.5rem,4vh,2.5rem)">
+      <li><span class="lame lame--bientot">
+        <span class="lame__lieu">Camping-car</span>
+        <span class="lame__duree">en construction</span>
+      </span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="enveloppe pied__rang">
+    <strong>gofree.fr</strong>
+    <span>MOTO OFFROAD 4X4 — application GPS tout-terrain, France.</span>
+    <span>Cartographie&nbsp;: <a href="https://geoservices.ign.fr/" rel="noopener">IGN Géoplateforme</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
