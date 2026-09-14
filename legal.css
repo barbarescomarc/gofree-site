@@ -1,117 +1,113 @@
-/* Page légale : une plaque gravée, longue. Même monde que le site, mais
-   réglée pour la lecture suivie plutôt que pour la persuasion. */
+/* Page légale, dans la direction « Minimalism & Swiss ».
+   Réglée pour la lecture suivie plutôt que pour la persuasion : mesure
+   courte, interlignage généreux, un seul accent. */
 
 .bandeau-legal {
-  background: var(--foret-fonce);
-  padding: 32px 20px;
-  box-shadow: inset 0 -14px 0 var(--jaune);
-  padding-bottom: 46px;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--space-6) var(--space-3) var(--space-8);
 }
+@media (min-width: 768px) { .bandeau-legal { padding-inline: var(--space-4); } }
+
 .bandeau-legal h1 {
-  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
-  color: var(--blanc-gr);
-  margin-top: .7rem;
+  font-size: var(--text-3xl);
+  color: var(--color-on-primary);
+  margin-top: var(--space-2);
 }
 .retour {
-  display: inline-block;
-  font-family: Rajdhani, system-ui, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  /* Cible tactile : le libellé seul ne fait que 20 px de haut. */
+  min-height: 44px;
+  font-size: var(--text-sm);
   font-weight: 600;
-  font-size: .9375rem;
-  letter-spacing: .06em;
+  letter-spacing: .04em;
   text-transform: uppercase;
-  color: var(--jaune);
+  color: #C7D6E6;
   text-decoration: none;
 }
-.retour:hover, .retour:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.retour:hover, .retour:focus-visible { color: var(--color-on-primary); text-decoration: underline; }
 .maj {
-  margin: .55rem 0 0;
-  font-size: .875rem;
-  color: var(--sur-foret-2);
+  margin-top: var(--space-1);
+  font-size: var(--text-sm);
+  color: #C7D6E6;
   font-variant-numeric: tabular-nums;
 }
 
 .legal {
-  background: var(--blanc-gr);
-  color: var(--grave);
-  padding: 40px 20px 56px;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: var(--space-6) var(--space-3) var(--space-8);
 }
+@media (min-width: 768px) { .legal { padding-inline: var(--space-4); } }
 .legal .enveloppe { max-width: 44rem; }
 
 .legal .chapo {
-  font-size: clamp(1.0625rem, .5vw + .95rem, 1.1875rem);
+  font-size: var(--text-lg);
   line-height: 1.6;
-  color: var(--grave);
-  background: rgba(240, 179, 16, .26);
-  padding: 18px 20px;
-  margin: 0 0 2.5rem;
+  color: var(--color-foreground);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-6);
 }
 
 .legal h2 {
-  font-size: clamp(1.3rem, 3vw, 1.7rem);
-  color: var(--grave);
-  margin: 2.6rem 0 .8rem;
-  padding-bottom: .5rem;
-  border-bottom: 2px solid rgba(11, 34, 22, .16);
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  margin: var(--space-6) 0 var(--space-2);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
 }
 .legal h3 {
-  font-size: clamp(1.05rem, 2vw, 1.2rem);
-  color: var(--foret-clair);
-  margin: 1.8rem 0 .5rem;
+  font-size: var(--text-lg);
+  color: var(--color-foreground);
+  margin: var(--space-4) 0 var(--space-1);
 }
-.legal p { margin: 0 0 1rem; color: var(--grave-doux); line-height: 1.65; }
-.legal ul { margin: 0 0 1.2rem; padding-left: 1.3rem; color: var(--grave-doux); }
-.legal li { margin-bottom: .5rem; line-height: 1.6; }
-.legal strong { color: var(--grave); }
+.legal p { margin-bottom: var(--space-2); color: var(--color-muted-foreground); line-height: 1.7; }
+.legal ul { margin: 0 0 var(--space-3); padding-left: 1.3rem; color: var(--color-muted-foreground); }
+.legal li { margin-bottom: var(--space-1); line-height: 1.65; }
+.legal strong { color: var(--color-foreground); }
 .legal code {
   font-size: .9em;
-  background: rgba(11, 34, 22, .07);
+  background: var(--color-muted);
   padding: .1em .4em;
-  border-radius: 3px;
+  border-radius: 4px;
 }
-.legal a { color: var(--foret-clair); text-underline-offset: 3px; }
-.legal a:hover, .legal a:focus-visible { color: var(--orange); }
 
-/* L'avertissement sur les contacts : c'est le point que les gens sautent. */
+/* L'avertissement sur les contacts : c'est le point que les gens sautent.
+   Encadré plein plutôt que barre latérale colorée — celle-ci est devenue
+   la signature la plus reconnaissable des interfaces générées. */
 .avertissement {
-  position: relative;
-  background: rgba(200, 35, 44, .09);
-  padding: 26px 20px 18px;
-  margin: 1.2rem 0 1.5rem;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin: var(--space-3) 0 var(--space-4);
+  color: #7F1D1D;
 }
-.avertissement::before {
-  content: "";
-  position: absolute;
-  top: 10px; left: 20px;
-  width: 34px; height: 11px;
-  background: linear-gradient(var(--rouge-gr) 0 50%, var(--blanc-gr) 50% 100%);
-  border: 1px solid rgba(11, 34, 22, .3);
-}
+.avertissement strong { color: #7F1D1D; }
 
 .duree {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0 1.5rem;
-  font-size: .9375rem;
+  margin: var(--space-2) 0 var(--space-4);
+  font-size: var(--text-sm);
 }
 .duree th, .duree td {
   text-align: left;
-  padding: 12px 14px;
-  border-bottom: 1px solid rgba(11, 34, 22, .14);
+  padding: var(--space-1) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
   vertical-align: top;
 }
 .duree th {
-  font-family: Rajdhani, system-ui, sans-serif;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: .03em;
   text-transform: uppercase;
-  letter-spacing: .05em;
-  color: var(--grave);
-  background: rgba(240, 179, 16, .22);
-  border-bottom-color: rgba(11, 34, 22, .26);
+  font-size: var(--text-xs);
+  color: var(--color-foreground);
+  background: var(--color-muted);
 }
-.duree td { color: var(--grave-doux); }
+.duree td { color: var(--color-muted-foreground); }
 .duree tr:last-child td { border-bottom: none; }
-
-@media (min-width: 48rem) {
-  .bandeau-legal { padding: 48px 32px; }
-  .legal { padding: 56px 32px 80px; }
-}
