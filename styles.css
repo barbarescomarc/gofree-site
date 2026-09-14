@@ -358,7 +358,10 @@ h1, h2, h3, .lame__lieu, .plaque__titre {
   margin-top: clamp(1.5rem, 3.5vh, 2.25rem);
   padding: clamp(.85rem, 1.8vh, 1.1rem) clamp(3rem, 5vw, 4rem) clamp(.85rem, 1.8vh, 1.1rem) clamp(1.4rem, 3vw, 2rem);
   background: var(--orange);
-  color: #FFF7F1;
+  /* Encre foncée et non blanche : blanc sur cet orange plafonne à 3,24:1,
+     sous le seuil AA. L'orange est celui de l'application, on n'y touche
+     pas — c'est le texte qui cède, et il y gagne 4,88:1. */
+  color: var(--grave);
   font-family: Rajdhani, system-ui, sans-serif;
   font-weight: 700;
   font-size: clamp(1.1rem, 2.2vw, 1.45rem);
@@ -449,4 +452,73 @@ h1, h2, h3, .lame__lieu, .plaque__titre {
 @media (max-width: 34rem) {
   .vue { max-width: 100%; }
   .vue img { height: auto; width: min(100%, 15rem); }
+}
+
+/* ── Le carnet du col ───────────────────────────────────────── */
+/* La boîte en métal au sommet, et le carnet dedans. Le vide est le sujet :
+   la page ne porte que ce que de vrais pilotes y auront écrit, et rien
+   avant. Le dessin doit donc rendre l'attente digne, pas l'absence gênante. */
+
+.carnet {
+  margin: clamp(2rem, 5vh, 3rem) 0 0;
+  max-width: 34rem;
+}
+
+.carnet__page {
+  position: relative;
+  background: var(--blanc-gr);
+  padding: 30px 26px 30px 60px;
+  border: 1px solid var(--bord);
+  box-shadow: var(--lame-ombre);
+  transform: rotate(-.5deg);
+}
+
+/* La marge rouge du cahier d'écolier français : une seule ligne suffit à
+   dire « carnet » sans écrire le mot. */
+.carnet__page::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 42px;
+  width: 1px;
+  background: rgba(200, 35, 44, .55);
+}
+
+.carnet__vide {
+  margin: 0;
+  font-style: italic;
+  font-size: clamp(1rem, .4vw + .9rem, 1.0625rem);
+  /* Calé sur la réglure : le texte s'assoit sur les lignes au lieu de
+     flotter entre elles. */
+  line-height: 2rem;
+  color: var(--grave-doux);
+  max-width: 34ch;
+}
+
+/* Les lignes vides qui attendent une entrée. Dessinées comme éléments et
+   non comme dégradé répété : ce sont des emplacements, pas une texture. */
+.carnet__ligne {
+  height: 2rem;
+  border-bottom: 1px solid rgba(11, 34, 22, .16);
+}
+.carnet__ligne:first-child { border-top: 1px solid rgba(11, 34, 22, .16); }
+
+.carnet__pied {
+  margin: 1rem 0 0;
+  font-family: Rajdhani, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: .875rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #4A3B07;
+}
+
+.carnet__appel { margin-top: clamp(1.75rem, 4vh, 2.5rem); }
+
+/* Le fond émaillé est clair : le texte d'appoint doit y virer à l'encre. */
+.appoint--sombre { color: #4A3B07; }
+.appoint--sombre a { color: var(--grave); }
+
+@media (max-width: 34rem) {
+  .carnet__page { padding: 24px 18px 24px 48px; transform: none; }
+  .carnet__page::before { left: 32px; }
 }
