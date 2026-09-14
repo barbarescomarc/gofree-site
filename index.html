@@ -33,6 +33,10 @@
           <span class="lame__lieu">Le terrain</span>
           <span class="lame__duree">2 min</span>
         </a></li>
+        <li><a class="lame" href="#observation">
+          <span class="lame__lieu">L'observation</span>
+          <span class="lame__duree">1 min</span>
+        </a></li>
         <li><a class="lame" href="#securite">
           <span class="lame__lieu">La sécurité</span>
           <span class="lame__duree">3 min</span>
@@ -68,7 +72,7 @@
         Le fond topographique officiel et la photo aérienne de la
         Géoplateforme, avec l'ombrage du relief pour lire une pente avant
         de s'y engager. Les zones déjà consultées restent affichables sans
-        réseau — c'est une règle du produit : aucun fond n'est proposé
+        réseau. C'est une règle du produit : aucun fond n'est proposé
         s'il n'est pas emportable.
       </p>
     </div>
@@ -122,6 +126,62 @@
   </div>
 </section>
 
+<!-- ═══ LE MODE OBSERVATION ═════════════════════════════════ -->
+<section class="etape etape--sombre" id="observation">
+  <div class="enveloppe deux-colonnes">
+    <div class="etape__entete">
+      <span class="balise" aria-hidden="true"></span>
+      <h2>Le mode observation</h2>
+      <p class="etape__chapo">
+        Le terrain en relief, incliné, avant d'y aller. Les chemins prennent
+        une couleur selon ce qu'ils sont : piste, sentier ou route. Tu vois où
+        ça monte, où ça se resserre, et par où sortir, depuis la table de la
+        cuisine plutôt qu'au milieu du versant.
+      </p>
+    </div>
+
+    <div class="vues">
+      <figure class="vue">
+        <img src="img/observation-photo.jpg" width="630" height="1400" loading="lazy"
+             alt="Le col de Pailhères vu en relief sur photo aérienne, avec les pistes en orange et les sentiers en jaune tracés sur les pentes.">
+        <figcaption>Port de Pailhères, photo aérienne drapée sur le relief. Les pistes ressortent en orange, les sentiers en jaune.</figcaption>
+      </figure>
+      <figure class="vue">
+        <img src="img/observation-topo.jpg" width="630" height="1400" loading="lazy"
+             alt="Le même col en fond topographique incliné, avec les courbes de niveau et le relief accentué.">
+        <figcaption>Le même point de vue en fond topographique, relief accentué. On bascule d'un rendu à l'autre.</figcaption>
+      </figure>
+    </div>
+
+    <ul class="plaques">
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <polyline points="2 19 8 9 12 14 17 4 22 19"/>
+          <line x1="2" y1="19" x2="22" y2="19"/>
+        </svg>
+        <h3 class="plaque__titre">Le relief, forcé</h3>
+        <p>Trois crans d'exagération. Une pente qui semble molle vue du dessus se redresse dès qu'on incline le terrain.</p>
+      </li>
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 17c4 0 5-9 9-9s5 5 9 5"/>
+          <path d="M3 21c4 0 5-5 9-5"/>
+        </svg>
+        <h3 class="plaque__titre">Chaque chemin, sa couleur</h3>
+        <p>Piste en orange, sentier en jaune, route en blanc. Tu sais ce qui t'attend avant de charger la moto.</p>
+      </li>
+      <li class="plaque">
+        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 9h12v11H3z"/>
+          <path d="M8 4h13v11"/>
+        </svg>
+        <h3 class="plaque__titre">Photo ou topo</h3>
+        <p>Le même versant en vue aérienne puis en fond IGN. L'un montre la végétation, l'autre les courbes de niveau.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- ═══ LA SÉCURITÉ ═════════════════════════════════════════ -->
 <section class="etape etape--emaillee" id="securite">
   <div class="enveloppe">
@@ -131,7 +191,7 @@
       <p class="etape__chapo">
         L'accéléromètre et le GPS détectent un choc suivi d'une immobilité.
         Un compte à rebours s'affiche. Sans réaction de ta part, l'alerte
-        part vers tes contacts de confiance avec ta position — par SMS
+        part vers tes contacts de confiance avec ta position, par SMS
         depuis le téléphone et par le serveur.
       </p>
     </div>
@@ -182,7 +242,7 @@
       <p class="etape__chapo">
         Loi Lalonde, chemins ONF, pistes DFCI, espaces naturels sensibles,
         règles du bivouac sauvage, zones à risque. Consultable hors ligne,
-        au moment où la question se pose — pas au retour, quand c'est trop
+        au moment où la question se pose, pas au retour, quand c'est trop
         tard.
       </p>
     </div>

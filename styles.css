@@ -234,6 +234,12 @@ h1, h2, h3, .lame__lieu, .plaque__titre {
 .etape { padding: 56px 20px; position: relative; }
 .etape--claire { background: var(--blanc-gr); color: var(--grave); }
 .etape--emaillee { background: var(--jaune); color: var(--grave); }
+/* Fond sombre : le relief et la photo aerienne se detachent mieux sur du
+   vert profond que sur la plaque claire. */
+.etape--sombre { background: var(--foret); color: var(--sur-foret); }
+.etape--sombre h2 { color: var(--blanc-gr); }
+.etape--sombre .etape__chapo { color: var(--sur-foret-2); }
+.etape--sombre .vue figcaption { color: var(--sur-foret-2); }
 
 .etape__entete { max-width: var(--mesure); }
 .etape h2 {
