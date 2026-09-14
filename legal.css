@@ -1,0 +1,117 @@
+/* Page légale : une plaque gravée, longue. Même monde que le site, mais
+   réglée pour la lecture suivie plutôt que pour la persuasion. */
+
+.bandeau-legal {
+  background: var(--foret-fonce);
+  padding: 32px 20px;
+  box-shadow: inset 0 -14px 0 var(--jaune);
+  padding-bottom: 46px;
+}
+.bandeau-legal h1 {
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  color: var(--blanc-gr);
+  margin-top: .7rem;
+}
+.retour {
+  display: inline-block;
+  font-family: Rajdhani, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: .9375rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--jaune);
+  text-decoration: none;
+}
+.retour:hover, .retour:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.maj {
+  margin: .55rem 0 0;
+  font-size: .875rem;
+  color: var(--sur-foret-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.legal {
+  background: var(--blanc-gr);
+  color: var(--grave);
+  padding: 40px 20px 56px;
+}
+.legal .enveloppe { max-width: 44rem; }
+
+.legal .chapo {
+  font-size: clamp(1.0625rem, .5vw + .95rem, 1.1875rem);
+  line-height: 1.6;
+  color: var(--grave);
+  background: rgba(240, 179, 16, .26);
+  padding: 18px 20px;
+  margin: 0 0 2.5rem;
+}
+
+.legal h2 {
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  color: var(--grave);
+  margin: 2.6rem 0 .8rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid rgba(11, 34, 22, .16);
+}
+.legal h3 {
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  color: var(--foret-clair);
+  margin: 1.8rem 0 .5rem;
+}
+.legal p { margin: 0 0 1rem; color: var(--grave-doux); line-height: 1.65; }
+.legal ul { margin: 0 0 1.2rem; padding-left: 1.3rem; color: var(--grave-doux); }
+.legal li { margin-bottom: .5rem; line-height: 1.6; }
+.legal strong { color: var(--grave); }
+.legal code {
+  font-size: .9em;
+  background: rgba(11, 34, 22, .07);
+  padding: .1em .4em;
+  border-radius: 3px;
+}
+.legal a { color: var(--foret-clair); text-underline-offset: 3px; }
+.legal a:hover, .legal a:focus-visible { color: var(--orange); }
+
+/* L'avertissement sur les contacts : c'est le point que les gens sautent. */
+.avertissement {
+  position: relative;
+  background: rgba(200, 35, 44, .09);
+  padding: 26px 20px 18px;
+  margin: 1.2rem 0 1.5rem;
+}
+.avertissement::before {
+  content: "";
+  position: absolute;
+  top: 10px; left: 20px;
+  width: 34px; height: 11px;
+  background: linear-gradient(var(--rouge-gr) 0 50%, var(--blanc-gr) 50% 100%);
+  border: 1px solid rgba(11, 34, 22, .3);
+}
+
+.duree {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: .9375rem;
+}
+.duree th, .duree td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(11, 34, 22, .14);
+  vertical-align: top;
+}
+.duree th {
+  font-family: Rajdhani, system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--grave);
+  background: rgba(240, 179, 16, .22);
+  border-bottom-color: rgba(11, 34, 22, .26);
+}
+.duree td { color: var(--grave-doux); }
+.duree tr:last-child td { border-bottom: none; }
+
+@media (min-width: 48rem) {
+  .bandeau-legal { padding: 48px 32px; }
+  .legal { padding: 56px 32px 80px; }
+}
