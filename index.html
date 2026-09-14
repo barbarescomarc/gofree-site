@@ -280,7 +280,7 @@
       </a>
       <p class="appoint">
         Le lien d'inscription TestFlight arrive. En attendant, écris à
-        <a href="mailto:contact@gofree.fr?subject=Je%20veux%20tester%20GO%20FREE">contact@gofree.fr</a>
+        <a class="courriel" data-nom="marc" data-dom="gofree.fr" data-sujet="Je veux tester GO FREE" href="#tester">marc [chez] gofree.fr</a>
         en disant ce que tu roules et où — on t'ajoute à la prochaine vague.
       </p>
 
@@ -324,12 +324,20 @@
     </figure>
 
     <div class="carnet__appel">
-      <a class="bouton" href="mailto:contact@gofree.fr?subject=Ma%20ligne%20dans%20le%20carnet%20GO%20FREE&amp;body=Ce%20que%20je%20roule%20%3A%0ALe%20massif%20%3A%0ACe%20qui%20m%27a%20servi%20%3A%0A%0A(Dis-moi%20si%20je%20peux%20publier%20ton%20pr%C3%A9nom%20et%20ta%20machine.)">
+      <a class="bouton courriel" data-nom="marc" data-dom="gofree.fr" data-sujet="Ma ligne dans le carnet GO FREE" data-corps="Ce que je roule :
+Le massif :
+Ce qui m'a servi :
+
+(Dis-moi si je peux publier ton prénom et ta machine.)" href="#carnet">
         Écrire ma ligne
       </a>
       <p class="appoint appoint--sombre">
         Trois phrases suffisent : ce que tu roules, dans quel massif, et ce qui
         t'a servi. Dis-nous si on peut publier ton prénom et ta machine.
+        Ou écris directement à
+        <a class="courriel" data-nom="marc" data-dom="gofree.fr"
+           data-sujet="Ma ligne dans le carnet GO FREE"
+           href="#carnet">marc [chez] gofree.fr</a>.
       </p>
     </div>
   </div>
@@ -367,5 +375,25 @@
   </div>
 </footer>
 
+<script>
+// L'adresse n'est jamais ecrite d'un seul tenant dans la page : elle est
+// recomposee ici. Un robot qui lit le HTML n'y trouve ni « mailto: » ni
+// l'adresse complete. Sans JavaScript, le texte reste lisible par un humain
+// sous la forme « marc [chez] gofree.fr ».
+(function () {
+  var liens = document.querySelectorAll('a.courriel');
+  for (var i = 0; i < liens.length; i++) {
+    var a = liens[i];
+    var adresse = a.dataset.nom + String.fromCharCode(64) + a.dataset.dom;
+    var params = [];
+    if (a.dataset.sujet) params.push('subject=' + encodeURIComponent(a.dataset.sujet));
+    if (a.dataset.corps) params.push('body=' + encodeURIComponent(a.dataset.corps));
+    a.href = 'mail' + 'to:' + adresse + (params.length ? '?' + params.join('&') : '');
+    // Le libelle n'est remplace que s'il portait l'adresse masquee : les
+    // boutons gardent le leur.
+    if (a.textContent.indexOf('[chez]') !== -1) a.textContent = adresse;
+  }
+})();
+</script>
 </body>
 </html>

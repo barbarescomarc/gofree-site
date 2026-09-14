@@ -33,7 +33,7 @@
     <p>
       L'application et le service <strong>GO FREE</strong> (anciennement
       MOTO OFFROAD 4X4) sont édités par Marc Barbaresco, éditeur individuel, joignable à
-      <a href="mailto:contact@gofree.fr">contact@gofree.fr</a>. Les données
+      <a class="courriel" data-nom="marc" data-dom="gofree.fr" href="#">marc [chez] gofree.fr</a>. Les données
       sont hébergées sur un serveur loué chez Hetzner, à Helsinki (Finlande),
       donc au sein de l'Union européenne.
     </p>
@@ -139,7 +139,7 @@
       Le règlement européen te donne le droit d'accéder à tes données, de les
       corriger, de les faire effacer, d'en obtenir une copie et de t'opposer à
       leur traitement. Écris à
-      <a href="mailto:contact@gofree.fr">contact@gofree.fr</a>. Réponse sous
+      <a class="courriel" data-nom="marc" data-dom="gofree.fr" href="#">marc [chez] gofree.fr</a>. Réponse sous
       un mois.
     </p>
     <p>
@@ -174,5 +174,25 @@
   </div>
 </footer>
 
+<script>
+// L'adresse n'est jamais ecrite d'un seul tenant dans la page : elle est
+// recomposee ici. Un robot qui lit le HTML n'y trouve ni « mailto: » ni
+// l'adresse complete. Sans JavaScript, le texte reste lisible par un humain
+// sous la forme « marc [chez] gofree.fr ».
+(function () {
+  var liens = document.querySelectorAll('a.courriel');
+  for (var i = 0; i < liens.length; i++) {
+    var a = liens[i];
+    var adresse = a.dataset.nom + String.fromCharCode(64) + a.dataset.dom;
+    var params = [];
+    if (a.dataset.sujet) params.push('subject=' + encodeURIComponent(a.dataset.sujet));
+    if (a.dataset.corps) params.push('body=' + encodeURIComponent(a.dataset.corps));
+    a.href = 'mail' + 'to:' + adresse + (params.length ? '?' + params.join('&') : '');
+    // Le libelle n'est remplace que s'il portait l'adresse masquee : les
+    // boutons gardent le leur.
+    if (a.textContent.indexOf('[chez]') !== -1) a.textContent = adresse;
+  }
+})();
+</script>
 </body>
 </html>

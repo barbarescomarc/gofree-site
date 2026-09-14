@@ -22,7 +22,9 @@ img/            captures réelles de l'application
   (`https://testflight.apple.com/join/XXXXXXXX`). Il est actuellement
   désactivé, avec l'adresse e-mail en repli. Chercher le commentaire
   `REMPLACER` dans `index.html`.
-- `contact@gofree.fr` suppose une redirection e-mail configurée chez OVH.
+- `marc@gofree.fr` est une redirection OVH vers la boîte personnelle.
+  Nom volontairement non générique : `contact@` et `info@` sont attaqués au
+  dictionnaire par les robots, sans même avoir à les trouver sur une page.
 
 ## Développement
 
