@@ -1,6 +1,6 @@
 # gofree.fr
 
-Site vitrine de l'application **MOTO OFFROAD 4X4** — GPS tout-terrain pour
+Site vitrine de l'application **GO FREE** — GPS tout-terrain pour
 moto et 4×4 en France, bientôt camping-car.
 
 Statique : HTML + CSS, aucune dépendance, aucune étape de build. Polices
