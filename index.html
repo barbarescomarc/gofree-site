@@ -4,365 +4,452 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GO FREE — la carte IGN hors ligne, et les secours si tu tombes</title>
-<meta name="description" content="Application GPS pour rouler hors des routes ouvertes en France : cartes IGN emportables hors ligne, détection de chute, alerte aux contacts de confiance. En test sur iPhone et Android.">
-<meta name="theme-color" content="#14432E">
-<link rel="preload" as="font" type="font/woff2" href="fonts/rajdhani-700-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="fonts/barlow-400-latin.woff2" crossorigin>
+<meta name="description" content="Application GPS pour rouler hors des routes ouvertes en France : cartes IGN emportables hors ligne, détection de chute, alerte aux proches et aux riders du groupe.">
+<meta name="theme-color" content="#1E3A5F">
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
+<link rel="stylesheet" href="fonts-inter.css">
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="GO FREE">
-<meta property="og:description" content="La carte IGN hors ligne, et les secours si tu tombes. En test sur iPhone et Android.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://gofree.fr/">
 </head>
 <body>
 
-<!-- ═══ LE POTEAU ═══════════════════════════════════════════ -->
-<header class="poteau">
-  <div class="enveloppe">
-    <div class="poteau__contenu">
-      <div class="poteau__texte">
-      <h1>Tu roules là où la route s'arrête.<em>L'app suit.</em></h1>
-      <p class="poteau__sous">
-        Les cartes IGN dans ta poche, même sans réseau. Et si tu tombes,
-        tes contacts sont prévenus avec ta position — sans que tu aies
-        à sortir le téléphone.
-      </p>
+<a class="saut-contenu" href="#contenu">Aller au contenu</a>
 
-      <ul class="lames">
-        <li><a class="lame" href="#terrain">
-          <span class="lame__lieu">Le terrain</span>
-          <span class="lame__duree">2 min</span>
-        </a></li>
-        <li><a class="lame" href="#observation">
-          <span class="lame__lieu">L'observation</span>
-          <span class="lame__duree">1 min</span>
-        </a></li>
-        <li><a class="lame" href="#securite">
-          <span class="lame__lieu">La sécurité</span>
-          <span class="lame__duree">3 min</span>
-        </a></li>
-        <li><a class="lame" href="#regle">
-          <span class="lame__lieu">La règle</span>
-          <span class="lame__duree">1 min</span>
-        </a></li>
-        <li><a class="lame" href="#carnet">
-          <span class="lame__lieu">Le carnet</span>
-          <span class="lame__duree">30 s</span>
-        </a></li>
-        <li><a class="lame lame--action" href="#tester">
-          <span class="lame__lieu">Devenir testeur</span>
-          <span class="lame__duree">30 s</span>
-        </a></li>
-      </ul>
+<header class="entete">
+  <div class="enveloppe entete__rang">
+    <a class="marque" href="#contenu">GO&nbsp;FREE</a>
+    <nav class="entete__nav" aria-label="Sections du site">
+      <a href="#cartes">Cartes</a>
+      <a href="#observation">Observation</a>
+      <a href="#securite">Sécurité</a>
+      <a href="#vehicules">Véhicules</a>
+      <a href="#regle">Réglementation</a>
+      <a href="#carnet">Le carnet</a>
+    </nav>
+    <a class="bouton bouton--principal" href="#tester">Devenir testeur</a>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <!-- ═══ 1. HÉROS ═══ -->
+  <section class="heros">
+    <div class="enveloppe heros__grille">
+      <div>
+        <span class="surtitre">En test sur iPhone et Android</span>
+        <h1>Tu roules là où la route s'arrête.</h1>
+        <p class="heros__chapo">
+          Les cartes IGN dans ta poche, même sans réseau. Et si tu tombes, tes
+          contacts et les riders de ta sortie sont prévenus avec ta position,
+          sans que tu aies à sortir le téléphone.
+        </p>
+        <div class="heros__actions">
+          <a class="bouton bouton--principal bouton--large" href="#tester">Rejoindre les tests</a>
+          <a class="bouton bouton--secondaire bouton--large" href="#cartes">Voir ce que ça fait</a>
+        </div>
+        <p class="heros__note">Gratuit pendant la phase de test. France métropolitaine.</p>
       </div>
-
-      <figure class="ecran-poteau">
+      <figure class="ecran">
         <img src="img/carte-ign.jpg" width="630" height="1400" fetchpriority="high"
              alt="L'application affichant la carte topographique IGN autour d'Embrun, avec le bouton SOS et l'échelle de distance.">
       </figure>
     </div>
-  </div>
-</header>
+  </section>
 
-<main>
-
-<!-- ═══ LE TERRAIN ══════════════════════════════════════════ -->
-<section class="etape etape--claire" id="terrain">
-  <div class="enveloppe deux-colonnes">
-    <div class="etape__entete">
-      <span class="balise" aria-hidden="true"></span>
-      <h2>La carte de l'IGN, emportée</h2>
-      <p class="etape__chapo">
-        Le fond topographique officiel et la photo aérienne de la
-        Géoplateforme, avec l'ombrage du relief pour lire une pente avant
-        de s'y engager. Les zones déjà consultées restent affichables sans
-        réseau. C'est une règle du produit : aucun fond n'est proposé
-        s'il n'est pas emportable.
+  <!-- ═══ 2. PROPOSITION DE VALEUR ═══ -->
+  <section class="valeur">
+    <div class="enveloppe">
+      <p class="valeur__texte">
+        Un GPS de route t'abandonne dès que le bitume s'arrête. GO FREE prend
+        le relais : <strong>fonds officiels de l'IGN</strong>, emportables hors
+        réseau, et une chaîne d'alerte qui part toute seule quand tu ne peux
+        plus le faire toi-même.
       </p>
     </div>
+  </section>
 
-    <div class="vues">
-      <figure class="vue">
-        <img src="img/carte-ign.jpg" width="630" height="1400" loading="lazy"
-             alt="Carte topographique IGN autour d'Embrun, avec les chemins, les courbes de niveau et le bouton SOS.">
-        <figcaption>Fond topographique IGN, ombrage du relief activé. L'échelle indique ce qu'un centimètre représente sur le terrain.</figcaption>
-      </figure>
-      <figure class="vue">
-        <img src="img/carte-photo.jpg" width="630" height="1400" loading="lazy"
-             alt="La même zone en photo aérienne IGN : parcelles, forêts et rivière vues du ciel.">
-        <figcaption>Photo aérienne, même secteur. On bascule d'un fond à l'autre sans attendre.</figcaption>
-      </figure>
-    </div>
+  <!-- ═══ 3. FONCTIONS CLÉS ═══ -->
 
-    <ul class="plaques">
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <polyline points="2 7 9 4 15 7 22 4 22 17 15 20 9 17 2 20 2 7"/>
-          <line x1="9" y1="4" x2="9" y2="17"/><line x1="15" y1="7" x2="15" y2="20"/>
-        </svg>
-        <h3 class="plaque__titre">Hors ligne</h3>
-        <p>Les tuiles déjà vues sont gardées sur le téléphone. Le fond de vallée sans réseau ne t'efface pas la carte.</p>
-      </li>
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <polyline points="2 18 8 8 12 13 16 5 22 18"/>
-        </svg>
-        <h3 class="plaque__titre">Le relief</h3>
-        <p>L'ombrage IGN creuse les vallées et fait ressortir les crêtes. Tu vois la pente avant de t'y engager.</p>
-      </li>
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 6c3 0 3 3 6 3s3-3 6-3 4 2 4 2"/>
-          <path d="M4 13c3 0 3 3 6 3s3-3 6-3 4 2 4 2"/>
-        </svg>
-        <h3 class="plaque__titre">Les traces</h3>
-        <p>Enregistre ta sortie, retouche-la, fusionne deux segments. Partage-la ou reprends celle d'un autre.</p>
-      </li>
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/>
-          <path d="M15 9l-2.5 5.5L7 17l2.5-5.5z"/>
-        </svg>
-        <h3 class="plaque__titre">Le guidage</h3>
-        <p>Flèches de manœuvre, carte et trace toujours visibles, écran qui reste allumé. Lisible avec des gants.</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ═══ LE MODE OBSERVATION ═════════════════════════════════ -->
-<section class="etape etape--sombre" id="observation">
-  <div class="enveloppe deux-colonnes">
-    <div class="etape__entete">
-      <span class="balise" aria-hidden="true"></span>
-      <h2>Le mode observation</h2>
-      <p class="etape__chapo">
-        Le terrain en relief, incliné, avant d'y aller. Les chemins prennent
-        une couleur selon ce qu'ils sont : piste, sentier ou route. Tu vois où
-        ça monte, où ça se resserre, et par où sortir, depuis la table de la
-        cuisine plutôt qu'au milieu du versant.
-      </p>
-    </div>
-
-    <div class="vues">
-      <figure class="vue">
-        <img src="img/observation-photo.jpg" width="630" height="1400" loading="lazy"
-             alt="Le col de Pailhères vu en relief sur photo aérienne, avec les pistes en orange et les sentiers en jaune tracés sur les pentes.">
-        <figcaption>Port de Pailhères, photo aérienne drapée sur le relief. Les pistes ressortent en orange, les sentiers en jaune.</figcaption>
-      </figure>
-      <figure class="vue">
-        <img src="img/observation-topo.jpg" width="630" height="1400" loading="lazy"
-             alt="Le même col en fond topographique incliné, avec les courbes de niveau et le relief accentué.">
-        <figcaption>Le même point de vue en fond topographique, relief accentué. On bascule d'un rendu à l'autre.</figcaption>
-      </figure>
-    </div>
-
-    <ul class="plaques">
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <polyline points="2 19 8 9 12 14 17 4 22 19"/>
-          <line x1="2" y1="19" x2="22" y2="19"/>
-        </svg>
-        <h3 class="plaque__titre">Le relief, forcé</h3>
-        <p>Trois crans d'exagération. Une pente qui semble molle vue du dessus se redresse dès qu'on incline le terrain.</p>
-      </li>
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 17c4 0 5-9 9-9s5 5 9 5"/>
-          <path d="M3 21c4 0 5-5 9-5"/>
-        </svg>
-        <h3 class="plaque__titre">Chaque chemin, sa couleur</h3>
-        <p>Piste en orange, sentier en jaune, route en blanc. Tu sais ce qui t'attend avant de charger la moto.</p>
-      </li>
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 9h12v11H3z"/>
-          <path d="M8 4h13v11"/>
-        </svg>
-        <h3 class="plaque__titre">Photo ou topo</h3>
-        <p>Le même versant en vue aérienne puis en fond IGN. L'un montre la végétation, l'autre les courbes de niveau.</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ═══ LA SÉCURITÉ ═════════════════════════════════════════ -->
-<section class="etape etape--emaillee" id="securite">
-  <div class="enveloppe">
-    <div class="etape__entete">
-      <span class="balise" aria-hidden="true"></span>
-      <h2>Si tu tombes et que personne ne te voit</h2>
-      <p class="etape__chapo">
-        L'accéléromètre et le GPS détectent un choc suivi d'une immobilité.
-        Un compte à rebours s'affiche. Sans réaction de ta part, l'alerte
-        part vers tes contacts de confiance avec ta position, par SMS
-        depuis le téléphone et par le serveur.
-      </p>
-    </div>
-
-    <ul class="plaques">
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6z"/>
-          <path d="M12 8v5M12 16v.5"/>
-        </svg>
-        <h3 class="plaque__titre">Détection de chute</h3>
-        <p>Trois signaux doivent converger : le choc, l'orientation d'arrivée, et les vibrations retombées. Un nid-de-poule ne déclenche rien.</p>
-      </li>
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
-        </svg>
-        <h3 class="plaque__titre">Compte à rebours</h3>
-        <p>Tu gardes la main : un geste annule l'alerte. Le délai se règle selon le terrain que tu pratiques.</p>
-      </li>
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 21s-7-5.2-7-10a7 7 0 1114 0c0 4.8-7 10-7 10z"/>
-          <circle cx="12" cy="11" r="2.6"/>
-        </svg>
-        <h3 class="plaque__titre">Suivi solo</h3>
-        <p>Tes proches suivent ta progression sur un lien, sans installer quoi que ce soit. Tu coupes quand tu veux.</p>
-      </li>
-      <li class="plaque">
-        <svg class="plaque__icone" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="8" cy="9" r="3"/><circle cx="17" cy="11" r="2.4"/>
-          <path d="M2.5 19c.7-3 2.9-4.5 5.5-4.5S12.8 16 13.5 19"/>
-          <path d="M15 15.2c2 .3 3.6 1.5 4.2 3.8"/>
-        </svg>
-        <h3 class="plaque__titre">Mode groupe</h3>
-        <p>Jusqu'à vingt pilotes se voient en direct sur la même carte, avec un point de ralliement partagé.</p>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ═══ LA RÈGLE ════════════════════════════════════════════ -->
-<section class="etape etape--claire" id="regle">
-  <div class="enveloppe deux-colonnes">
-    <div class="etape__entete">
-      <span class="balise" aria-hidden="true"></span>
-      <h2>Ce que dit la loi, avec toi sur la piste</h2>
-      <p class="etape__chapo">
-        Loi Lalonde, chemins ONF, pistes DFCI, espaces naturels sensibles,
-        règles du bivouac sauvage, zones à risque. Consultable hors ligne,
-        au moment où la question se pose, pas au retour, quand c'est trop
-        tard.
-      </p>
-    </div>
-
-    <div class="vues">
-      <figure class="vue">
-        <img src="img/reglementation.jpg" width="630" height="1400" loading="lazy"
-             alt="Écran de l'application listant les zones à risque, les bons réflexes de terrain et les numéros d'urgence.">
-        <figcaption>Zones à risque, bons réflexes, numéros d'urgence. Disponible sans réseau.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ DEVENIR TESTEUR ═════════════════════════════════════ -->
-<section class="etape inscription" id="tester">
-  <div class="enveloppe">
-    <div class="etape__entete">
-      <span class="balise" aria-hidden="true"></span>
-      <h2>L'app est en test. Viens l'éprouver.</h2>
-      <p class="etape__chapo">
-        Elle roule déjà, mais elle a besoin de vrais terrains et de vrais
-        retours. Si tu sors régulièrement en moto tout-terrain ou en 4×4,
-        ta place est ici.
-      </p>
-
-      <!-- REMPLACER par le lien public TestFlight :
-           https://testflight.apple.com/join/XXXXXXXX -->
-      <a class="bouton" href="#tester" aria-disabled="true">
-        Rejoindre les tests
-      </a>
-      <p class="appoint">
-        Le lien d'inscription TestFlight arrive. En attendant, écris à
-        <a class="courriel" data-nom="marc" data-dom="gofree.fr" data-sujet="Je veux tester GO FREE" href="#tester">marc [chez] gofree.fr</a>
-        en disant ce que tu roules et où — on t'ajoute à la prochaine vague.
-      </p>
-
-      <div class="couverture">
-        <p>
-          <strong>Couverture France.</strong> Les fonds cartographiques
-          viennent de l'IGN et s'arrêtent aux frontières. Hors de France,
-          l'app n'a pas de carte à te montrer.
+  <!-- 3.1 Cartes -->
+  <section class="section section--carte" id="cartes">
+    <div class="enveloppe">
+      <div class="section__entete">
+        <h2>La carte de l'IGN, emportée</h2>
+        <p class="section__chapo">
+          Le fond topographique officiel et la photo aérienne de la
+          Géoplateforme, avec l'ombrage du relief pour lire une pente avant de
+          s'y engager.
         </p>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ═══ LE CARNET DU COL ════════════════════════════════════ -->
-<section class="etape etape--emaillee" id="carnet">
-  <div class="enveloppe">
-    <div class="etape__entete">
-      <span class="balise" aria-hidden="true"></span>
-      <h2>Le carnet du col</h2>
-      <p class="etape__chapo">
-        En haut de certains cols, une boîte en métal abrite un carnet. Celui
-        qui passe écrit une ligne : la date, sa machine, le temps qu'il
-        faisait. Cette page est ce carnet-là.
+      <div class="duo">
+        <div>
+          <ul class="points">
+            <li class="point">
+              <span class="point__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3z"/><path d="M9 4v13M15 7v13"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Hors ligne</h3>
+                <p>Les tuiles déjà vues restent sur le téléphone. Le fond de vallée sans réseau ne t'efface pas la carte.</p>
+              </div>
+            </li>
+            <li class="point">
+              <span class="point__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 18l6-10 4 5 4-8 6 13z"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Le relief</h3>
+                <p>L'ombrage IGN creuse les vallées et fait ressortir les crêtes. Tu vois la pente avant de t'y engager.</p>
+              </div>
+            </li>
+            <li class="point">
+              <span class="point__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 7c3 0 3 3 6 3s3-3 6-3 4 2 4 2"/><path d="M4 14c3 0 3 3 6 3s3-3 6-3 4 2 4 2"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Les traces</h3>
+                <p>Enregistre ta sortie, retouche-la, fusionne deux segments. Partage-la ou reprends celle d'un autre.</p>
+              </div>
+            </li>
+            <li class="point">
+              <span class="point__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/><path d="M15 9l-2.5 5.5L7 17l2.5-5.5z"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Le guidage</h3>
+                <p>Flèches de manœuvre, carte et trace toujours visibles, écran qui reste allumé. Lisible avec des gants.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="duo__visuel">
+          <figure>
+            <img src="img/carte-ign.jpg" width="630" height="1400" loading="lazy"
+                 alt="Carte topographique IGN autour d'Embrun, avec les chemins, les courbes de niveau et le bouton SOS.">
+            <figcaption>Fond topographique</figcaption>
+          </figure>
+          <figure>
+            <img src="img/carte-photo.jpg" width="630" height="1400" loading="lazy"
+                 alt="La même zone en photo aérienne IGN : parcelles, forêts et rivière vues du ciel.">
+            <figcaption>Photo aérienne</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.2 Observation -->
+  <section class="section" id="observation">
+    <div class="enveloppe">
+      <div class="section__entete">
+        <h2>Le mode observation</h2>
+        <p class="section__chapo">
+          Le terrain en relief, incliné, avant d'y aller. Les chemins prennent
+          une couleur selon ce qu'ils sont : piste, sentier ou route.
+        </p>
+      </div>
+
+      <div class="duo duo--inverse">
+        <div>
+          <ul class="cartes">
+            <li class="carte">
+              <span class="carte__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 19l7-11 4 6 5-9 4 14z"/><path d="M2 19h20"/>
+                </svg>
+              </span>
+              <h3>Le relief, forcé</h3>
+              <p>Trois crans d'exagération. Une pente qui semble molle vue du dessus se redresse dès qu'on incline le terrain.</p>
+            </li>
+            <li class="carte">
+              <span class="carte__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 17c4 0 5-9 9-9s5 5 9 5"/><path d="M3 21c4 0 5-5 9-5"/>
+                </svg>
+              </span>
+              <h3>Chaque chemin, sa couleur</h3>
+              <p>Piste en orange, sentier en jaune, route en blanc. Tu sais ce qui t'attend avant de charger.</p>
+            </li>
+            <li class="carte">
+              <span class="carte__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9h12v11H3z"/><path d="M8 4h13v11"/>
+                </svg>
+              </span>
+              <h3>Photo ou topo</h3>
+              <p>Le même versant en vue aérienne puis en fond IGN. L'un montre la végétation, l'autre les courbes.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="duo__visuel">
+          <figure>
+            <img src="img/observation-photo.jpg" width="630" height="1400" loading="lazy"
+                 alt="Le col de Pailhères vu en relief sur photo aérienne, avec les pistes en orange et les sentiers en jaune.">
+            <figcaption>Port de Pailhères, photo</figcaption>
+          </figure>
+          <figure>
+            <img src="img/observation-topo.jpg" width="630" height="1400" loading="lazy"
+                 alt="Le même col en fond topographique incliné, avec les courbes de niveau et le relief accentué.">
+            <figcaption>Même point, topo</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.3 Sécurité -->
+  <section class="section section--carte" id="securite">
+    <div class="enveloppe">
+      <div class="section__entete">
+        <h2>Si tu tombes et que personne ne te voit</h2>
+        <p class="section__chapo">
+          L'accéléromètre et le GPS détectent un choc suivi d'une immobilité. Un
+          compte à rebours s'affiche. Sans réaction de ta part, l'alerte part.
+        </p>
+      </div>
+
+      <ul class="cartes">
+        <li class="carte">
+          <span class="carte__icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M12 8v4M12 16h.01"/>
+            </svg>
+          </span>
+          <h3>Détection de chute</h3>
+          <p>Trois signaux doivent converger : le choc, l'orientation d'arrivée, les vibrations retombées. Un nid-de-poule ne déclenche rien.</p>
+        </li>
+        <li class="carte">
+          <span class="carte__icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>
+            </svg>
+          </span>
+          <h3>Compte à rebours</h3>
+          <p>Tu gardes la main : un geste annule l'alerte. Le délai se règle selon le terrain que tu pratiques.</p>
+        </li>
+        <li class="carte">
+          <span class="carte__icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>
+            </svg>
+          </span>
+          <h3>Suivi solo</h3>
+          <p>Tes proches suivent ta progression sur un lien, sans rien installer. Tu coupes quand tu veux.</p>
+        </li>
+        <li class="carte">
+          <span class="carte__icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><path d="M17 8.5a3 3 0 0 0 0-1M18 20c0-2.5-1-4-2.5-5"/>
+            </svg>
+          </span>
+          <h3>Alerte au groupe</h3>
+          <p>Les riders de ta sortie sont prévenus en même temps que tes proches, avec ta position. Ils sont à quelques centaines de mètres.</p>
+        </li>
+      </ul>
+
+      <p class="avis">
+        <strong>La limite honnête.</strong> Détection et alertes reposent sur des
+        capteurs, un réseau mobile et des services tiers. Aucun des trois n'est
+        garanti sur une piste. Cette application ne remplace ni un moyen d'alerte
+        dédié, ni le fait de prévenir quelqu'un avant de partir.
       </p>
     </div>
+  </section>
 
-    <figure class="carnet">
-      <div class="carnet__page">
-        <p class="carnet__vide">
-          Il est vide, et il le restera tant que personne n'y aura écrit.
-          Aucun avis ne sera inventé pour le remplir.
+  <!-- 3.4 Véhicules -->
+  <section class="section" id="vehicules">
+    <div class="enveloppe">
+      <div class="section__entete">
+        <h2>Moto, 4×4, camping-car</h2>
+        <p class="section__chapo">
+          Le véhicule choisi ne change pas qu'une icône : il décide de ce que
+          l'application cherche autour de toi et de ce qu'elle te propose comme
+          itinéraire.
         </p>
-        <div class="carnet__ligne" aria-hidden="true"></div>
-        <div class="carnet__ligne" aria-hidden="true"></div>
-        <div class="carnet__ligne" aria-hidden="true"></div>
       </div>
-      <figcaption class="carnet__pied">
-        Premières lignes à écrire.
-      </figcaption>
-    </figure>
 
-    <div class="carnet__appel">
-      <a class="bouton courriel" data-nom="marc" data-dom="gofree.fr" data-sujet="Ma ligne dans le carnet GO FREE" data-corps="Ce que je roule :
-Le massif :
-Ce qui m'a servi :
+      <ul class="cartes">
+        <li class="carte">
+          <span class="carte__icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="M8 17h6l3-6h-4l-2-3H8"/>
+            </svg>
+          </span>
+          <h3>Moto</h3>
+          <p>Stations-service et réparateurs moto autour de toi, profil d'itinéraire qui accepte les pistes carrossables.</p>
+        </li>
+        <li class="carte">
+          <span class="carte__icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 14l2-5h14l2 5v4h-3M6 18H3v-4"/><circle cx="8" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>
+            </svg>
+          </span>
+          <h3>4×4</h3>
+          <p>Stations et garages, mêmes pistes carrossables, mêmes traces partagées par la communauté.</p>
+        </li>
+        <li class="carte">
+          <span class="carte__icone" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 16V7h13l5 5v4h-2M6 16H2"/><circle cx="8" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
+            </svg>
+          </span>
+          <h3>Camping-car</h3>
+          <p>Aires de services, vidange, eau potable et bornes de recharge. Le gabarit que tu déclares écarte les routes qui ne passent pas.</p>
+        </li>
+      </ul>
 
-(Dis-moi si je peux publier ton prénom et ta machine.)" href="#carnet">
-        Écrire ma ligne
-      </a>
-      <p class="appoint appoint--sombre">
+      <p class="avis">
+        <strong>Sur le gabarit.</strong> Hauteur, longueur et poids partent avec le
+        calcul d'itinéraire. Seuls les obstacles relevés dans OpenStreetMap
+        peuvent être évités : un pont bas non cartographié ne le sera pas.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3.5 Réglementation -->
+  <section class="section section--carte" id="regle">
+    <div class="enveloppe">
+      <div class="section__entete">
+        <h2>Ce que dit la loi, avec toi sur la piste</h2>
+        <p class="section__chapo">
+          Loi Lalonde, chemins ONF, pistes DFCI, espaces naturels sensibles,
+          règles du bivouac sauvage, zones à risque. Consultable hors ligne, au
+          moment où la question se pose.
+        </p>
+      </div>
+
+      <div class="duo">
+        <div>
+          <ul class="points">
+            <li class="point">
+              <span class="point__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Les textes qui te concernent</h3>
+                <p>Ce qui est autorisé, ce qui est toléré, ce qui est interdit, dit en français plutôt qu'en articles.</p>
+              </div>
+            </li>
+            <li class="point">
+              <span class="point__icone" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17h.01"/>
+                </svg>
+              </span>
+              <div>
+                <h3>Les numéros d'urgence</h3>
+                <p>112, 15, 17, 18, 114, et le secours en montagne. Disponibles sans réseau de données.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="duo__visuel">
+          <figure>
+            <img src="img/reglementation.jpg" width="630" height="1400" loading="lazy"
+                 alt="Écran de l'application listant les zones à risque, les bons réflexes de terrain et les numéros d'urgence.">
+            <figcaption>Hors ligne, dans ta poche</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3.6 Le carnet -->
+  <section class="section" id="carnet">
+    <div class="enveloppe">
+      <div class="section__entete">
+        <h2>Le carnet du col</h2>
+        <p class="section__chapo">
+          En haut de certains cols, une boîte en métal abrite un carnet. Celui
+          qui passe écrit une ligne : la date, sa machine, le temps qu'il
+          faisait. Cette page est ce carnet-là.
+        </p>
+      </div>
+
+      <figure class="carnet">
+        <div class="carnet__page">
+          <p class="carnet__vide">
+            Il est vide, et il le restera tant que personne n'y aura écrit.
+            Aucun avis ne sera inventé pour le remplir.
+          </p>
+          <div class="carnet__ligne" aria-hidden="true"></div>
+          <div class="carnet__ligne" aria-hidden="true"></div>
+          <div class="carnet__ligne" aria-hidden="true"></div>
+        </div>
+        <figcaption class="carnet__pied">Premières lignes à écrire.</figcaption>
+      </figure>
+
+      <p class="carnet__appel">
+        <a class="bouton bouton--secondaire courriel"
+           data-nom="marc" data-dom="gofree.fr"
+           data-sujet="Ma ligne dans le carnet GO FREE"
+           data-corps="Ce que je roule :&#10;Le massif :&#10;Ce qui m'a servi :&#10;&#10;(Dis-moi si je peux publier ton prénom et ta machine.)"
+           href="#carnet">Écrire ma ligne</a>
+      </p>
+      <p class="carnet__note">
         Trois phrases suffisent : ce que tu roules, dans quel massif, et ce qui
-        t'a servi. Dis-nous si on peut publier ton prénom et ta machine.
-        Ou écris directement à
+        t'a servi. Dis-nous si on peut publier ton prénom et ta machine. Ou
+        écris directement à
         <a class="courriel" data-nom="marc" data-dom="gofree.fr"
            data-sujet="Ma ligne dans le carnet GO FREE"
            href="#carnet">marc [chez] gofree.fr</a>.
       </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ═══ BIENTÔT ═════════════════════════════════════════════ -->
-<section class="etape etape--claire">
-  <div class="enveloppe">
-    <div class="etape__entete">
-      <span class="balise" aria-hidden="true"></span>
-      <h2>La suite</h2>
-      <p class="etape__chapo">
-        Le camping-car rejoindra la moto et le 4×4 : mêmes cartes, mêmes
-        traces, mêmes secours, avec ce qu'il faut en plus pour voyager en
-        autonomie. Pas de date annoncée tant que ce n'est pas prêt.
+  <!-- 3.7 La suite -->
+  <section class="section section--carte" id="suite">
+    <div class="enveloppe">
+      <div class="section__entete">
+        <h2>La suite</h2>
+        <p class="section__chapo">
+          Le camping-car rejoint la moto et le 4×4 : mêmes cartes, mêmes traces,
+          mêmes secours, avec ce qu'il faut en plus pour voyager en autonomie.
+          Pas de date annoncée tant que ce n'est pas prêt.
+        </p>
+      </div>
+      <p class="jalon"><strong>Camping-car</strong> <span>en construction</span></p>
+    </div>
+  </section>
+
+  <!-- ═══ 4. APPEL À L'ACTION ═══ -->
+  <section class="appel" id="tester">
+    <div class="enveloppe appel__grille">
+      <h2>L'app est en test. Viens l'éprouver.</h2>
+      <p>
+        Elle roule déjà, mais elle a besoin de vrais terrains et de vrais
+        retours. Si tu sors régulièrement en moto tout-terrain, en 4×4 ou en
+        camping-car, ta place est ici.
+      </p>
+      <a class="bouton bouton--principal bouton--large courriel"
+         data-nom="marc" data-dom="gofree.fr"
+         data-sujet="Je veux tester GO FREE"
+         data-corps="Ce que je roule :&#10;Le massif :"
+         href="#tester">
+        Demander une place dans les tests
+      </a>
+      <p class="appel__note">
+        Le lien d'inscription TestFlight arrive. En attendant, écris à
+        <a class="courriel" data-nom="marc" data-dom="gofree.fr"
+           data-sujet="Je veux tester GO FREE"
+           href="#tester">marc [chez] gofree.fr</a> en disant ce que
+        tu roules et où. Couverture France&nbsp;: les fonds viennent de l'IGN et
+        s'arrêtent aux frontières.
       </p>
     </div>
-    <ul class="lames" style="margin-top:clamp(1.5rem,4vh,2.5rem)">
-      <li><span class="lame lame--bientot">
-        <span class="lame__lieu">Camping-car</span>
-        <span class="lame__duree">en construction</span>
-      </span></li>
-    </ul>
-  </div>
-</section>
+  </section>
 
 </main>
 
@@ -370,15 +457,15 @@ Ce qui m'a servi :
   <div class="enveloppe pied__rang">
     <strong>gofree.fr</strong>
     <span>GO FREE — application GPS tout-terrain, France.</span>
-    <span><a href="confidentialite.html">Confidentialité</a></span>
+    <a href="confidentialite.html">Confidentialité</a>
     <span>Cartographie&nbsp;: <a href="https://geoservices.ign.fr/" rel="noopener">IGN Géoplateforme</a></span>
   </div>
 </footer>
 
 <script>
-// L'adresse n'est jamais ecrite d'un seul tenant dans la page : elle est
-// recomposee ici. Un robot qui lit le HTML n'y trouve ni « mailto: » ni
-// l'adresse complete. Sans JavaScript, le texte reste lisible par un humain
+// L'adresse n'est jamais écrite d'un seul tenant dans la page : elle est
+// recomposée ici. Un robot qui lit le HTML n'y trouve ni « mailto: » ni
+// l'adresse complète. Sans JavaScript, le texte reste lisible par un humain
 // sous la forme « marc [chez] gofree.fr ».
 (function () {
   var liens = document.querySelectorAll('a.courriel');
@@ -389,8 +476,6 @@ Ce qui m'a servi :
     if (a.dataset.sujet) params.push('subject=' + encodeURIComponent(a.dataset.sujet));
     if (a.dataset.corps) params.push('body=' + encodeURIComponent(a.dataset.corps));
     a.href = 'mail' + 'to:' + adresse + (params.length ? '?' + params.join('&') : '');
-    // Le libelle n'est remplace que s'il portait l'adresse masquee : les
-    // boutons gardent le leur.
     if (a.textContent.indexOf('[chez]') !== -1) a.textContent = adresse;
   }
 })();

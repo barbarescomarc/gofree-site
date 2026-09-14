@@ -1,42 +1,58 @@
-@import url("fonts.css");
-
 /* ─────────────────────────────────────────────────────────────
-   gofree.fr — le monde du balisage de sentier.
-   Tôle émaillée, plaques gravées, poteau de mélèze. Les aplats
-   sont saturés : c'est de la laque, pas du parchemin.
+   GO FREE — direction « Minimalism & Swiss »
+   Produite d'après la recommandation d'UI/UX Pro Max :
+   pattern Hero + Features + CTA, palette marine/vert, Inter.
    ───────────────────────────────────────────────────────────── */
 
 :root {
-  /* Émail */
-  --foret:        #14432E;
-  --foret-fonce:  #0D2C1E;
-  --foret-clair:  #154430;
-  --jaune:        #F0B310;
-  --jaune-chaud:  #E09A05;
-  --orange:       #E8601C;  /* signal d'action, hérité de l'app */
-  --rouge-gr:     #C8232C;  /* balisage GR */
-  --blanc-gr:     #F7F5EF;
+  /* Jetons sémantiques, tels que recommandés par le skill */
+  --color-primary:          #1E3A5F;
+  --color-on-primary:       #FFFFFF;
+  --color-secondary:        #2563EB;
+  /* Le skill propose #059669 : blanc dessus ne donne que 3,77:1, sous le
+     seuil de 4,5:1 que sa propre regle de bouton exige. On prend sa teinte
+     de survol comme base, 5,48:1, et on assombrit le survol d'un cran. */
+  --color-accent:           #047857;
+  --color-accent-survol:    #065F46;
+  --color-on-accent:        #FFFFFF;
+  --color-background:       #F8FAFC;
+  --color-foreground:       #0F172A;
+  --color-card:             #FFFFFF;
+  --color-muted:            #F1F3F5;
+  --color-muted-foreground: #475569;
+  --color-border:           #E4E7EB;
+  --color-destructive:      #DC2626;
 
-  /* Encres */
-  --grave:        #0B2216;  /* lettres gravées dans la plaque */
-  --grave-doux:   #3C5A4A;
-  --sur-foret:    #EAF0EA;
-  --sur-foret-2:  #A9C2B3;
+  /* Échelle typographique 12 / 14 / 16 / 18 / 24 / 32 / 48 / 64 */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2rem;
+  --text-3xl:  clamp(2.25rem, 4vw, 3rem);
+  --text-4xl:  clamp(2.75rem, 6vw, 4rem);
 
-  --poteau:       #6B4A2E;
-  --poteau-ombre: #4A3220;
+  /* Rythme d'espacement 8 px */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  --space-12: 6rem;
 
-  --bord:         rgba(11, 34, 22, .22);
+  --radius: 8px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, .06);
+  --shadow-md: 0 4px 16px -4px rgba(15, 23, 42, .12);
 
-  --lame-ombre: 0 2px 3px rgba(11, 34, 22, .28),
-                0 10px 22px -8px rgba(11, 34, 22, .45);
-
-  --mesure: 68ch;
+  --ease: cubic-bezier(.4, 0, .2, 1);
+  --duration: 220ms;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -45,511 +61,429 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   }
   /* Sans cela, l'agrandissement subsisterait et sauterait d'un coup : pire
      que l'animation qu'on venait de retirer. */
-  .vue:hover img, .vue:focus-within img,
-  .ecran-poteau:hover { transform: none !important; }
+  .duo__visuel figure:hover img,
+  .duo__visuel figure:focus-within img,
+  .ecran:hover img { transform: none !important; }
 }
 
 body {
   margin: 0;
-  background: var(--foret);
-  color: var(--sur-foret);
-  font-family: Barlow, system-ui, sans-serif;
-  font-size: clamp(1.0625rem, .4vw + .95rem, 1.1875rem);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: var(--text-base);
   line-height: 1.6;
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Surfaces du navigateur : elles font partie du monde, pas du défaut. */
-::selection { background: var(--jaune); color: var(--grave); }
-:focus-visible {
-  outline: 3px solid var(--jaune);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-:root { scrollbar-color: var(--jaune-chaud) var(--foret-fonce); scrollbar-width: thin; }
-::-webkit-scrollbar { width: 12px; }
-::-webkit-scrollbar-track { background: var(--foret-fonce); }
-::-webkit-scrollbar-thumb {
-  background: var(--jaune-chaud);
-  border: 3px solid var(--foret-fonce);
-  border-radius: 6px;
-}
-a { color: inherit; }
-img { max-width: 100%; display: block; }
-
-h1, h2, h3, .lame__lieu, .plaque__titre {
-  font-family: Rajdhani, system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-  line-height: 1.04;
+h1, h2, h3 {
   margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
-/* ── Lettres gravées ────────────────────────────────────────── */
-.grave {
-  color: var(--grave);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .34);
+p { margin: 0; }
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--color-secondary); text-underline-offset: 3px; }
+/* Scope au fond clair : sur le bloc marine, cette regle repeignait le lien
+   de la couleur du fond — 1:1, donc invisible. */
+:where(main, .pied, .entete) a:hover { color: var(--color-primary); }
+.appel a:hover { color: #FFFFFF; }
+
+/* Anneau de focus visible : exigence critique du skill. */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/* ── Structure ──────────────────────────────────────────────── */
-.enveloppe { max-width: 1180px; margin: 0 auto; }
-
-/* ═══ LE POTEAU ═════════════════════════════════════════════ */
-.poteau {
-  position: relative;
-  padding: 48px 20px 56px;
-  background: linear-gradient(196deg, var(--foret-clair) 0%, var(--foret) 58%);
-  overflow: hidden;
+.enveloppe {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-3);
 }
+@media (min-width: 768px) { .enveloppe { padding-inline: var(--space-4); } }
 
-/* Le mât, planté derrière les lames. */
-.poteau::before {
-  content: "";
+.saut-contenu {
   position: absolute;
-  top: 0; bottom: 0;
-  left: clamp(1.25rem, 5vw, 4rem);
-  width: clamp(26px, 3vw, 42px);
-  background:
-    linear-gradient(90deg,
-      var(--poteau-ombre) 0 18%,
-      var(--poteau) 18% 62%,
-      var(--poteau-ombre) 62% 100%);
-  box-shadow: 3px 0 14px -4px rgba(0, 0, 0, .5);
+  left: -9999px;
+  top: 0;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: var(--space-1) var(--space-2);
+  z-index: 100;
 }
+.saut-contenu:focus { left: var(--space-2); top: var(--space-2); }
 
-.poteau__contenu {
-  position: relative;
-  padding-left: clamp(3.25rem, 9vw, 7.5rem);
+/* ── En-tête collant, avec l'appel à l'action ───────────────── */
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(248, 250, 252, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+.entete__rang {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 64px;
+}
+.marque {
+  font-weight: 700;
+  font-size: var(--text-lg);
+  letter-spacing: -0.01em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.entete__nav {
+  display: none;
+  gap: var(--space-3);
+}
+@media (min-width: 900px) { .entete__nav { display: flex; } }
+.entete__nav a {
+  color: var(--color-muted-foreground);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: var(--space-1) 0;
+  transition: color var(--duration) var(--ease);
+}
+.entete__nav a:hover { color: var(--color-foreground); }
+
+/* ── Boutons ────────────────────────────────────────────────── */
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  /* 44 px de haut minimum : cible tactile exigée par le skill. */
+  min-height: 44px;
+  padding: 0 var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration) var(--ease),
+              color var(--duration) var(--ease),
+              border-color var(--duration) var(--ease);
+}
+.bouton--principal {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+.bouton--principal:hover { background: var(--color-accent-survol); color: var(--color-on-accent); }
+.bouton--secondaire {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+.bouton--secondaire:hover { background: var(--color-muted); color: var(--color-primary); }
+.bouton[aria-disabled="true"] {
+  background: var(--color-muted);
+  color: var(--color-muted-foreground);
+  cursor: not-allowed;
+}
+.bouton--large { min-height: 52px; font-size: var(--text-base); padding-inline: var(--space-4); }
+
+/* ── Héros ──────────────────────────────────────────────────── */
+.heros { padding-block: var(--space-8) var(--space-6); }
+@media (min-width: 900px) { .heros { padding-block: var(--space-12) var(--space-8); } }
+
+.heros__grille {
   display: grid;
-  gap: clamp(1.5rem, 4vw, 3rem);
+  gap: var(--space-6);
+  align-items: center;
 }
-@media (min-width: 60rem) {
-  .poteau__contenu {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
-    align-items: center;
-  }
+@media (min-width: 900px) {
+  .heros__grille { grid-template-columns: 1.1fr 0.9fr; gap: var(--space-8); }
 }
 
-/* Les étapes qui montrent l'app : le propos à gauche, les écrans à droite. */
-.deux-colonnes { display: grid; gap: clamp(1.75rem, 4vw, 3.5rem); }
-@media (min-width: 62rem) {
-  .deux-colonnes {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: start;
-  }
-  .deux-colonnes .etape__entete { max-width: 42ch; }
-  .deux-colonnes .vues { margin-top: 0; }
-  .deux-colonnes .plaques { grid-column: 1 / -1; }
+.surtitre {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  padding: 4px 10px;
+  background: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
 }
 
-/* L'écran de l'app, vissé au poteau comme une plaque de plus. */
-.ecran-poteau {
+.heros h1 { font-size: var(--text-4xl); color: var(--color-primary); }
+.heros__chapo {
+  margin-top: var(--space-2);
+  max-width: 34rem;
+  font-size: var(--text-lg);
+  color: var(--color-muted-foreground);
+}
+.heros__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+.heros__note {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+}
+
+.ecran {
   margin: 0;
   justify-self: center;
-  width: fit-content;
-  transition: transform 220ms cubic-bezier(.4, 0, .2, 1),
-              box-shadow 220ms cubic-bezier(.4, 0, .2, 1);
-  padding: 10px 10px 14px;
-  background: var(--blanc-gr);
-  border: 3px solid var(--grave);
-  box-shadow: 0 4px 6px rgba(11, 34, 22, .3), 0 18px 26px -16px rgba(0, 0, 0, .5);
-  transform: rotate(1.4deg);
+  max-width: 280px;
+}
+.ecran img {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  background: var(--color-card);
+  transition: transform var(--duration) var(--ease),
+              box-shadow var(--duration) var(--ease);
 }
 /* Plus sobre que les vignettes : cette capture est deja grande, la meme
    amplitude la ferait deborder du cadre. */
-.ecran-poteau:hover {
+.ecran:hover img {
   transform: scale(1.03);
-  box-shadow: 0 26px 50px -18px rgba(0, 0, 0, .55);
+  box-shadow: 0 24px 48px -16px rgba(15, 23, 42, .3);
 }
 
-.ecran-poteau img {
-  display: block;
-  height: min(56vh, 520px);
-  width: auto;
-  border: 1px solid rgba(11, 34, 22, .25);
+/* ── Proposition de valeur ──────────────────────────────────── */
+.valeur {
+  padding-block: var(--space-6);
+  border-block: 1px solid var(--color-border);
+  background: var(--color-card);
+}
+.valeur__texte {
+  max-width: 46rem;
+  font-size: var(--text-xl);
+  line-height: 1.45;
+  color: var(--color-foreground);
+  font-weight: 500;
+}
+.valeur__texte strong { color: var(--color-primary); }
+
+/* ── Sections de fonctions ──────────────────────────────────── */
+.section { padding-block: var(--space-8); }
+@media (min-width: 900px) { .section { padding-block: var(--space-12); } }
+.section--carte { background: var(--color-card); border-block: 1px solid var(--color-border); }
+
+.section__entete { max-width: 42rem; margin-bottom: var(--space-6); }
+.section__entete h2 { font-size: var(--text-3xl); color: var(--color-primary); }
+.section__chapo {
+  margin-top: var(--space-2);
+  font-size: var(--text-lg);
+  color: var(--color-muted-foreground);
 }
 
-.poteau h1 {
-  font-size: clamp(2.35rem, 6vw, 4.4rem);
-  letter-spacing: -.015em;
-  color: var(--blanc-gr);
-  max-width: 13ch;
-  text-wrap: balance;
-}
-.poteau h1 em {
-  font-style: normal;
-  display: block;
-  color: var(--jaune);
-}
-
-.poteau__sous {
-  margin: clamp(1.1rem, 2.5vh, 1.75rem) 0 0;
-  max-width: 46ch;
-  color: var(--sur-foret-2);
-  font-size: clamp(1.0625rem, .5vw + .95rem, 1.3125rem);
-  line-height: 1.5;
-}
-
-/* ── Les lames directionnelles ──────────────────────────────── */
-.lames {
-  list-style: none;
-  margin: clamp(2.25rem, 6vh, 3.5rem) 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(.7rem, 1.6vh, 1.1rem);
-}
-
-.lame {
-  --lame-fond: var(--jaune);
-  --lame-encre: var(--grave);
-  display: flex;
-  align-items: baseline;
-  gap: clamp(.75rem, 2vw, 1.5rem);
-  width: fit-content;
-  max-width: min(100%, 40rem);
-  padding: clamp(.6rem, 1.4vh, .95rem) clamp(2.5rem, 5vw, 4rem) clamp(.6rem, 1.4vh, .95rem) clamp(1rem, 2.5vw, 1.75rem);
-  background: var(--lame-fond);
-  color: var(--lame-encre);
-  text-decoration: none;
-  /* La pointe du panneau, taillée à droite. */
-  clip-path: polygon(0 0, calc(100% - 1.6rem) 0, 100% 50%, calc(100% - 1.6rem) 100%, 0 100%);
-  box-shadow: var(--lame-ombre);
-  transform-origin: left center;
-  transition: transform .45s cubic-bezier(.16, 1, .3, 1),
-              filter .45s cubic-bezier(.16, 1, .3, 1);
-}
-
-.lame:hover, .lame:focus-visible { transform: rotate(-1.1deg) translateX(6px); filter: brightness(1.05); }
-.lame:active { transform: rotate(-.4deg) translateX(2px); }
-
-.lame--action { --lame-fond: var(--orange); --lame-encre: #FFF7F1; }
-.lame--action .lame__lieu { text-shadow: none; }
-.lame--bientot { --lame-fond: var(--blanc-gr); --lame-encre: var(--grave-doux); }
-
-.lame__lieu {
-  font-size: clamp(1.15rem, 2.6vw, 1.85rem);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .38);
-}
-.lame__duree {
-  font-variant-numeric: tabular-nums;
-  font-size: clamp(.8rem, 1.3vw, .95rem);
-  font-weight: 600;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  opacity: .72;
-  margin-left: auto;
-  white-space: nowrap;
-}
-
-/* ═══ LES ÉTAPES ════════════════════════════════════════════ */
-.etape { padding: 56px 20px; position: relative; }
-.etape--claire { background: var(--blanc-gr); color: var(--grave); }
-.etape--emaillee { background: var(--jaune); color: var(--grave); }
-/* Fond sombre : le relief et la photo aerienne se detachent mieux sur du
-   vert profond que sur la plaque claire. */
-.etape--sombre { background: var(--foret); color: var(--sur-foret); }
-.etape--sombre h2 { color: var(--blanc-gr); }
-.etape--sombre .etape__chapo { color: var(--sur-foret-2); }
-.etape--sombre .vue figcaption { color: var(--sur-foret-2); }
-
-.etape__entete { max-width: var(--mesure); }
-.etape h2 {
-  font-size: clamp(1.9rem, 5.5vw, 3.4rem);
-  letter-spacing: -.01em;
-  text-wrap: balance;
-}
-.etape--claire h2, .etape--emaillee h2 { color: var(--grave); }
-.etape__chapo {
-  margin: clamp(.85rem, 2vh, 1.25rem) 0 0;
-  max-width: 54ch;
-  font-size: clamp(1.0625rem, .5vw + .95rem, 1.25rem);
-  line-height: 1.55;
-}
-.etape--claire .etape__chapo { color: var(--grave-doux); }
-.etape--emaillee .etape__chapo { color: #4A3B07; }
-
-/* ── Balise GR : le jalon peint qui ouvre chaque étape ───────── */
-.balise {
-  display: block;
-  width: 46px; height: 15px;
-  margin-bottom: clamp(1.1rem, 2.6vh, 1.6rem);
-  background:
-    linear-gradient(var(--blanc-gr) 0 100%) 0 0 / 100% 100% no-repeat;
-  border: 2px solid rgba(11, 34, 22, .18);
-  position: relative;
-}
-.balise::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(var(--rouge-gr) 0 100%);
-  clip-path: inset(0 0 50% 0);
-}
-.etape--claire .balise, .etape--emaillee .balise { border-color: rgba(11, 34, 22, .26); }
-
-/* ── Le détail : plaques vissées sur le poteau ──────────────── */
-.plaques {
-  list-style: none;
-  margin: clamp(2rem, 5vh, 3.25rem) 0 0;
-  padding: 0;
+.duo {
   display: grid;
-  gap: clamp(.9rem, 2vw, 1.35rem);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: var(--space-6);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .duo { grid-template-columns: 1fr 1fr; gap: var(--space-8); }
+  .duo--inverse .duo__visuel { order: -1; }
 }
 
-.plaque {
-  position: relative;
-  padding: 20px 20px 22px;
-  background: var(--blanc-gr);
-  border: 1px solid var(--bord);
-  box-shadow: var(--lame-ombre);
-}
-.etape--claire .plaque { background: #FFFFFF; }
-
-/* Les deux vis, en haut de chaque plaque. */
-.plaque::before, .plaque::after {
-  content: "";
-  position: absolute; top: .6rem;
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #C9CCC4, #6E736A 70%);
-  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, .35);
-}
-.plaque::before { left: .62rem; }
-.plaque::after  { right: .62rem; }
-
-.plaque__titre {
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  color: var(--grave);
-  margin-bottom: .4rem;
-}
-.plaque p { margin: 0; color: var(--grave-doux); font-size: .9375rem; line-height: 1.55; }
-
-.plaque__icone { width: 30px; height: 30px; margin-bottom: .7rem; display: block; }
-.plaque__icone path, .plaque__icone circle, .plaque__icone line, .plaque__icone polyline {
-  fill: none; stroke: var(--foret-clair); stroke-width: 1.9;
-  stroke-linecap: round; stroke-linejoin: round;
-}
-
-/* ── Écrans de l'application ────────────────────────────────── */
-/* Les captures se calent sur la HAUTEUR, comme l'écran du héros : ce sont
-   des ecrans de telephone, bien plus hauts que larges. Les dimensionner en
-   largeur les faisait occuper toute la section et noyait le texte. */
-.vues {
-  margin: clamp(2.25rem, 5.5vh, 3.5rem) 0 0;
+.duo__visuel {
   display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1.25rem, 3vw, 2rem);
-  align-items: flex-start;
+  gap: var(--space-2);
+  justify-content: center;
 }
-.vue {
+.duo__visuel figure {
   margin: 0;
-  max-width: 15rem;
-  /* La voisine est a quelques pixels : sans empilement, la capture agrandie
+  max-width: 200px;
+  /* Le voisin est a quelques pixels : sans empilement, la capture agrandie
      passerait dessous au lieu de venir devant. */
   position: relative;
   z-index: 0;
 }
-.vue:hover, .vue:focus-within { z-index: 1; }
+.duo__visuel figure:hover,
+.duo__visuel figure:focus-within { z-index: 1; }
 
-.vue img {
-  height: min(44vh, 400px);
-  width: auto;
-  border: 3px solid var(--grave);
-  box-shadow: var(--lame-ombre);
-  background: var(--foret-fonce);
-  /* transform et ombre seulement : ni hauteur ni largeur, pour que
+.duo__visuel img {
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  /* transform et box-shadow seulement : ni largeur ni hauteur, pour que
      l'agrandissement ne repousse jamais ce qui l'entoure. */
-  transition: transform 220ms cubic-bezier(.4, 0, .2, 1),
-              box-shadow 220ms cubic-bezier(.4, 0, .2, 1);
+  transition: transform var(--duration) var(--ease),
+              box-shadow var(--duration) var(--ease);
 }
-.vue:hover img, .vue:focus-within img {
+.duo__visuel figure:hover img,
+.duo__visuel figure:focus-within img {
   transform: scale(1.08);
-  box-shadow: 0 3px 4px rgba(11, 34, 22, .3),
-              0 20px 42px -12px rgba(11, 34, 22, .55);
+  box-shadow: 0 18px 40px -12px rgba(15, 23, 42, .32);
 }
-.vue figcaption {
-  margin-top: .7rem;
-  font-size: .875rem;
-  line-height: 1.45;
-  color: var(--grave-doux);
+.duo__visuel figcaption {
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-muted-foreground);
+  text-align: center;
 }
-.etape--emaillee .vue figcaption { color: #4A3B07; }
 
-/* ── L'inscription ──────────────────────────────────────────── */
-.inscription { background: var(--foret-fonce); color: var(--sur-foret); }
-.inscription h2 { color: var(--blanc-gr); }
-.inscription .etape__chapo { color: var(--sur-foret-2); }
-
-.bouton {
-  display: inline-flex;
-  align-items: center;
-  gap: .8rem;
-  margin-top: clamp(1.5rem, 3.5vh, 2.25rem);
-  padding: clamp(.85rem, 1.8vh, 1.1rem) clamp(3rem, 5vw, 4rem) clamp(.85rem, 1.8vh, 1.1rem) clamp(1.4rem, 3vw, 2rem);
-  background: var(--orange);
-  /* Encre foncée et non blanche : blanc sur cet orange plafonne à 3,24:1,
-     sous le seuil AA. L'orange est celui de l'application, on n'y touche
-     pas — c'est le texte qui cède, et il y gagne 4,88:1. */
-  color: var(--grave);
-  font-family: Rajdhani, system-ui, sans-serif;
-  font-weight: 700;
-  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
-  text-transform: uppercase;
-  letter-spacing: .03em;
-  text-decoration: none;
-  clip-path: polygon(0 0, calc(100% - 1.6rem) 0, 100% 50%, calc(100% - 1.6rem) 100%, 0 100%);
-  box-shadow: var(--lame-ombre);
-  transform-origin: left center;
-  transition: transform .45s cubic-bezier(.16, 1, .3, 1), filter .45s cubic-bezier(.16, 1, .3, 1);
+/* ── Liste de points ────────────────────────────────────────── */
+.points { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: grid; gap: var(--space-2); }
+.point { display: flex; gap: var(--space-2); align-items: flex-start; }
+.point__icone {
+  display: block;
+  flex: none;
+  width: 24px; height: 24px;
+  color: var(--color-accent);
 }
-.bouton:hover, .bouton:focus-visible { transform: rotate(-1.1deg) translateX(6px); filter: brightness(1.07); }
-.bouton[aria-disabled="true"] {
-  background: var(--grave-doux);
-  color: #D6DFD8;
-  cursor: not-allowed;
-  box-shadow: none;
-}
-.bouton[aria-disabled="true"]:hover { transform: none; filter: none; }
+.point__icone svg { width: 100%; height: 100%; display: block; }
+.point h3 { font-size: var(--text-base); font-weight: 600; }
+.point p { margin-top: 2px; font-size: var(--text-sm); color: var(--color-muted-foreground); }
 
-.appoint {
-  margin: 1rem 0 0;
-  font-size: .9375rem;
-  color: var(--sur-foret-2);
-  max-width: 48ch;
+/* ── Cartes de fonction ─────────────────────────────────────── */
+.cartes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
 }
-.appoint a { color: var(--jaune); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-
-/* ── Avertissement de couverture ────────────────────────────── */
-.couverture {
-  margin: clamp(2rem, 5vh, 3rem) 0 0;
-  padding: 18px 20px;
-  border-left: 1px solid var(--rouge-gr);
-  background: rgba(200, 35, 44, .07);
-  max-width: var(--mesure);
+.carte {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow-sm);
 }
-.couverture p { margin: 0; font-size: .9375rem; color: var(--grave-doux); }
-.inscription .couverture { background: rgba(247, 245, 239, .06); }
-.inscription .couverture p { color: var(--sur-foret-2); }
+.section--carte .carte { background: var(--color-background); }
+.carte__icone {
+  display: block;
+  width: 24px; height: 24px;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+.carte__icone svg { width: 100%; height: 100%; display: block; }
+.carte h3 { font-size: var(--text-base); font-weight: 600; margin-bottom: 4px; }
+.carte p { font-size: var(--text-sm); color: var(--color-muted-foreground); }
 
-/* ── Pied : la plaque du fabricant ──────────────────────────── */
+/* ── Encadré d'avertissement ────────────────────────────────── */
+.avis {
+  margin-top: var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+}
+.avis strong { color: var(--color-foreground); }
+
+/* ── Appel à l'action final ─────────────────────────────────── */
+.appel {
+  padding-block: var(--space-8);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.appel__grille { max-width: 46rem; }
+.appel h2 { font-size: var(--text-3xl); color: var(--color-on-primary); }
+.appel p { margin-top: var(--space-2); font-size: var(--text-lg); color: #C7D6E6; }
+.appel .bouton--principal { margin-top: var(--space-4); }
+.appel__note { margin-top: var(--space-2); font-size: var(--text-sm); color: #C7D6E6; }
+.appel__note a { color: #FFFFFF; }
+.appel__note a:hover { color: #C7D6E6; }
+
+/* ── Pied de page ───────────────────────────────────────────── */
 .pied {
-  background: var(--foret-fonce);
-  border-top: 1px solid rgba(247, 245, 239, .12);
-  padding: 32px 20px;
-  font-size: .875rem;
-  color: var(--sur-foret-2);
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
 }
-.pied__rang { display: flex; flex-wrap: wrap; gap: .6rem clamp(1rem, 3vw, 2rem); align-items: baseline; }
-.pied strong {
-  font-family: Rajdhani, system-ui, sans-serif;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  color: var(--jaune);
-  letter-spacing: .04em;
+.pied__rang {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1) var(--space-3);
 }
-.pied a { color: var(--blanc-gr); text-underline-offset: 3px; }
-
-@media (max-width: 40rem) {
-  .lame { max-width: 100%; width: 100%; }
-  .lame__duree { margin-left: auto; }
-}
-
-/* Respiration sur grand écran — hors des raccourcis fluides, pour que
-   chaque conteneur déclare un retrait lisible en toutes circonstances. */
-@media (min-width: 48rem) {
-  .poteau { padding: 72px 32px 88px; }
-  .etape  { padding: 88px 32px; }
-  .pied   { padding: 44px 32px; }
-  .plaque { padding: 26px 26px 28px; }
-  .couverture { padding: 22px 26px; }
-}
-@media (min-width: 72rem) {
-  .poteau { padding: 96px 40px 112px; }
-  .etape  { padding: 112px 40px; }
-}
-
-/* Écran large mais bas (portable posé, fenêtre non maximisée) : le titre
-   cède du terrain pour que les lames restent dans le premier écran. */
-@media (min-width: 60rem) and (max-height: 52rem) {
-  .poteau h1 { font-size: clamp(2rem, 3.4vw, 3rem); }
-  .poteau__sous { margin-top: .9rem; font-size: 1.0625rem; }
-  .lames { margin-top: 1.4rem; }
-  .poteau { padding-top: 40px; padding-bottom: 48px; }
-  .ecran-poteau img { height: min(46vh, 380px); }
-}
-
-@media (max-width: 34rem) {
-  .vue { max-width: 100%; }
-  .vue img { height: auto; width: min(100%, 15rem); }
-}
+.pied strong { color: var(--color-primary); }
 
 /* ── Le carnet du col ───────────────────────────────────────── */
-/* La boîte en métal au sommet, et le carnet dedans. Le vide est le sujet :
-   la page ne porte que ce que de vrais pilotes y auront écrit, et rien
-   avant. Le dessin doit donc rendre l'attente digne, pas l'absence gênante. */
+/* Le vide est le sujet : la page ne porte que ce que de vrais pilotes y
+   auront écrit, et rien avant. Le dessin doit rendre l'attente digne. */
 
-.carnet {
-  margin: clamp(2rem, 5vh, 3rem) 0 0;
-  max-width: 34rem;
-}
+.carnet { margin: 0 0 var(--space-4); max-width: 34rem; }
 
 .carnet__page {
   position: relative;
-  background: var(--blanc-gr);
-  padding: 30px 26px 30px 60px;
-  border: 1px solid var(--bord);
-  box-shadow: var(--lame-ombre);
-  transform: rotate(-.5deg);
+  background: var(--color-card);
+  padding: var(--space-3) var(--space-3) var(--space-3) 60px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
 }
-
-/* La marge rouge du cahier d'écolier français : une seule ligne suffit à
-   dire « carnet » sans écrire le mot. */
+/* La marge rouge du cahier d'écolier : une seule ligne dit « carnet » sans
+   qu'on ait à écrire le mot. */
 .carnet__page::before {
   content: "";
   position: absolute;
-  top: 0; bottom: 0; left: 42px;
+  top: var(--space-2); bottom: var(--space-2); left: 40px;
   width: 1px;
-  background: rgba(200, 35, 44, .55);
+  background: rgba(220, 38, 38, .45);
 }
 
 .carnet__vide {
-  margin: 0;
   font-style: italic;
-  font-size: clamp(1rem, .4vw + .9rem, 1.0625rem);
-  /* Calé sur la réglure : le texte s'assoit sur les lignes au lieu de
-     flotter entre elles. */
   line-height: 2rem;
-  color: var(--grave-doux);
+  color: var(--color-muted-foreground);
   max-width: 34ch;
 }
 
-/* Les lignes vides qui attendent une entrée. Dessinées comme éléments et
-   non comme dégradé répété : ce sont des emplacements, pas une texture. */
-.carnet__ligne {
-  height: 2rem;
-  border-bottom: 1px solid rgba(11, 34, 22, .16);
-}
-.carnet__ligne:first-child { border-top: 1px solid rgba(11, 34, 22, .16); }
+/* Des emplacements qui attendent une entrée, pas une texture décorative. */
+.carnet__ligne { height: 2rem; border-bottom: 1px solid var(--color-border); }
+.carnet__ligne:first-of-type { border-top: 1px solid var(--color-border); }
 
 .carnet__pied {
-  margin: 1rem 0 0;
-  font-family: Rajdhani, system-ui, sans-serif;
+  margin-top: var(--space-1);
+  font-size: var(--text-xs);
   font-weight: 600;
-  font-size: .875rem;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: #4A3B07;
+  color: var(--color-muted-foreground);
 }
 
-.carnet__appel { margin-top: clamp(1.75rem, 4vh, 2.5rem); }
+.carnet__appel { margin: 0; }
+.carnet__note {
+  margin-top: var(--space-2);
+  max-width: 46rem;
+  font-size: var(--text-sm);
+  color: var(--color-muted-foreground);
+}
 
-/* Le fond émaillé est clair : le texte d'appoint doit y virer à l'encre. */
-.appoint--sombre { color: #4A3B07; }
-.appoint--sombre a { color: var(--grave); }
-
-@media (max-width: 34rem) {
-  .carnet__page { padding: 24px 18px 24px 48px; transform: none; }
-  .carnet__page::before { left: 32px; }
+/* ── Jalon « en construction » ──────────────────────────────── */
+.jalon {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+}
+.jalon strong { color: var(--color-foreground); }
+.jalon span {
+  font-size: var(--text-xs);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
 }
